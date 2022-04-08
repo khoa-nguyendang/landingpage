@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const testiStyles = makeStyles((theme: any ) => ({
+
+const testiStyles = (theme: any ) => ({
   card: {
     padding: theme.spacing(3)
   },
@@ -17,6 +17,6 @@ const testiStyles = makeStyles((theme: any ) => ({
     width: 30,
     height: 30
   }
-}));
+});
 
 export default testiStyles;

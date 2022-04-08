@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { useText } from '../../theme/common';
 import useStyles from './faq-style';
@@ -37,7 +37,7 @@ function FaqList() {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
   const [expanded, setExpanded] = React.useState(0);
-  const handleChange = panel => (event, newExpanded) => {
+  const handleChange = (panel: any) => (event: any, newExpanded: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
@@ -46,11 +46,11 @@ function FaqList() {
         <div key={indexGroup.toString()} id={'topic' + indexGroup} className={classes.accordion}>
           <Box mb={{ xs: 5, sm: 10 }}>
             <Box mb={3}>
-              <h4 className={text.subtitle}>
+              <h4 style={text.subtitle}>
                 Lorem ipsum dolor sit amet
               </h4>
             </Box>
-            {faqData.map((item, index) => (
+            {faqData.map((item: any, index: number) => (
               <div className={classes.item} key={index.toString()}>
                 <Accordion
                   classes={{

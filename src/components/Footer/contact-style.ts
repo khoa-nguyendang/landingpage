@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const contactStyles = makeStyles((theme: any ) => ({
+
+const contactStyles = (theme: any ) => ({
   root: {
     textAlign: 'center',
     paddingBottom: theme.spacing(5),
@@ -93,6 +93,6 @@ const contactStyles = makeStyles((theme: any ) => ({
       }
     }
   },
-}));
+});
 
 export default contactStyles;

@@ -7,10 +7,11 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import Settings from './TopNav/Settings';
 import useStyles from './header-style';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function Basic(props: any) {
@@ -63,7 +64,7 @@ function Basic(props: any) {
           <nav className={classes.userMenu}>
             <Button href={href}>{text}</Button>
             { isDesktop && <span className={classes.vDivider} /> }
-            <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
+            <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} {...props}/>
           </nav>
         </div>
       </Container>

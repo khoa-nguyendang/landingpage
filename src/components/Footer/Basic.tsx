@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import brand from '~/public/text/brand';
+import brand from '../../public/text/brand';
 import { useTranslation } from 'react-i18next';
 import menu from '../Header/data/single';
 import useStyles from './basic-style';
@@ -29,7 +29,7 @@ function Basic(props: any) {
       <Container maxWidth="lg">
         <nav>
           <ul>
-            {menu.map((item, index) => (
+            {menu.map((item: any, index: number) => (
               <li key={index.toString()}>
                 <Link href={'#' + item} variant="subtitle1">
                   {t('common:starter-landing.header_' + item)}

@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
+
 
 const identation = 8;
-const sidenavStyles = makeStyles((theme: any ) => ({
+const sidenavStyles = (theme: any ) => ({
   paperNav: {
     width: '100%',
     [theme.breakpoints.up(680)]: {
@@ -73,6 +73,6 @@ const sidenavStyles = makeStyles((theme: any ) => ({
       fill: theme.palette.primary.main
     }
   }
-}));
+});
 
 export default sidenavStyles;

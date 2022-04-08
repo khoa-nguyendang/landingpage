@@ -14,7 +14,7 @@ export default function Title(props: any) {
     align,
     dark
   } = props;
-  const setAlign = alignment => {
+  const setAlign = (alignment: any) => {
     switch (alignment) {
       case 'left':
         return classes.left;

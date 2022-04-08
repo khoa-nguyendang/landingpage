@@ -1,6 +1,6 @@
 import sample from './sample-pages';
 
-const defaultChild = id => [
+const defaultChild = (id: any) => [
   {
     name: '1Vivamus Condimentum',
     link: '#'

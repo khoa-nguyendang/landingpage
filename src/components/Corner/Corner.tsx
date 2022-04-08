@@ -1,14 +1,14 @@
-import React, { useReducer } from 'react';
-import uiState from '~/theme/config';
+import React, { useReducer, useState } from 'react';
+import uiState from '../../theme/config';
 import PageNav from '../PageNav';
 import Chat from '../Chat';
 
-function Corner() {
-  const [state] = useReducer(null, uiState);
+function Corner(props: any) {
+  const [state] = useState(uiState);
   return (
     <div>
       { state.corner === 'chat' && <Chat /> }
-      { state.corner === 'nav' && <PageNav /> }
+      { state.corner === 'nav' && <PageNav {...props}/> }
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const chatStyles = makeStyles((theme: any ) => ({
+
+const chatStyles = (theme: any ) => ({
   indicator: {
     marginRight: 4,
     borderRadius: '50%',
@@ -137,6 +137,6 @@ const chatStyles = makeStyles((theme: any ) => ({
       color: theme.palette.type === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark,
     },
   }
-}));
+});
 
 export default chatStyles;

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import Scrollspy from 'react-scrollspy';
+
+
 import { useTranslation } from 'react-i18next';
 import navMenu from '../data/single';
 import useClasses from '../../../customClasses';
 
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <a href={(props as any).to} {...props}/>; // eslint-disable-line
 });
 
 function MixedNav(props: any) {
@@ -20,14 +20,14 @@ function MixedNav(props: any) {
   } = props;
 
   return (
-    <Scrollspy
+    <div {...props}
       items={navMenu}
       currentClassName="active"
     >
-      {menuPrimary.map(item => (
+      {menuPrimary.map((item: any) => (
         <li key={item.id.toString()}>
           {singleNav ? (
-            <Button component={AnchorLink} offset={() => 100} href={item.url}>
+            <Button  {...props} offset={() => 100} href={item.url}>
               {t('starter-landing:header_' + item.name)}
             </Button>
           ) : (
@@ -37,7 +37,7 @@ function MixedNav(props: any) {
           )}
         </li>
       ))}
-    </Scrollspy>
+    </div>
   );
 }
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useTranslation } from 'react-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
@@ -29,7 +29,7 @@ function ListWidget(props: any) {
     <Paper title={t('common:blog_archived')} icon="ion-folder" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List component="nav">
-          {periode.map((item, index) => (
+          {periode.map((item: any, index: number) => (
             <ListItem key={index.toString()} button>
               <ListItemText primary={item} />
               <KeyboardArrowRight className={classes.flipRtl} />

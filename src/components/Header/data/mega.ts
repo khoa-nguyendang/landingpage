@@ -1,5 +1,5 @@
 import sample from './sample-pages';
-import imgAPI from '~/public/images/imgAPI';
+import imgAPI from '../../../public/images/imgAPI';
 
 const grandChild = [
   {

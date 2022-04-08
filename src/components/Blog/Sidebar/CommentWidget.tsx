@@ -52,7 +52,7 @@ function CommentWidget(props: any) {
   return (
     <Paper title={t('common:blog_comment')} icon="ion-android-textsms" whiteBg desc="">
       <List component="nav" dense className={classes.profileList}>
-        {comments.map((item, index) => (
+        {comments.map((item: any, index: number) => (
           <ListItem disableGutters key={index.toString()} button>
             <Avatar className={clsx(classes.avatar, classes[item.color])}>
               {firstChar(item.name)}

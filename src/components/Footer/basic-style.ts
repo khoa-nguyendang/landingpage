@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const basicStyles = makeStyles((theme: any ) => ({
+
+const basicStyles = (theme: any ) => ({
   root: {
     marginTop: theme.spacing(15),
     textAlign: 'center',
@@ -89,6 +89,6 @@ const basicStyles = makeStyles((theme: any ) => ({
     padding: theme.spacing(1.5),
     marginTop: theme.spacing(3),
   }
-}));
+});
 
 export default basicStyles;

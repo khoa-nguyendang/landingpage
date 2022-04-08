@@ -2,19 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Grid from '@mui/material/Grid';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import ListIcon from '@material-ui/icons/List';
-import GridIcon from '@material-ui/icons/BorderAll';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import ListIcon from '@mui/icons-material/List';
+import GridIcon from '@mui/icons-material/BorderAll';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import { useText, useTextAlign } from '~/theme/common';
+import { useText, useTextAlign } from '../../theme/common';
 import useStyles from './filter-style';
 import useClasses from '../../customClasses';
 
@@ -22,7 +22,7 @@ import useClasses from '../../customClasses';
 function Sorter(props: any) {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
   // Media Query
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('sm'));
@@ -56,7 +56,7 @@ function Sorter(props: any) {
     sortBy(event.target.value);
   };
 
-  const handleView = (event, val) => {
+  const handleView = (event: any, val: any) => {
     switchView(val);
   };
 
@@ -106,10 +106,10 @@ function Sorter(props: any) {
               displayEmpty
               fullWidth
               inputProps={{ 'aria-label': 'Sort By:' }}
-              onChange={(e) => handleSortBy(e)}
+              onChange={(e: any) => handleSortBy(e)}
             >
               <MenuItem value=""><em>Sort By:</em></MenuItem>
-              {sortList.map((item, index) => (
+              {sortList.map((item: any, index: number) => (
                 <MenuItem key={index.toString()} value={item.value}>{item.title}</MenuItem>
               ))}
             </Select>

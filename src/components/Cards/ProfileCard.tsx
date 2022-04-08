@@ -12,11 +12,11 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import SupervisorAccount from '@material-ui/icons/SupervisorAccount';
-import Favorite from '@material-ui/icons/Favorite';
-import PhotoLibrary from '@material-ui/icons/PhotoLibrary';
+import SupervisorAccount from '@mui/icons-material/SupervisorAccount';
+import Favorite from '@mui/icons-material/Favorite';
+import PhotoLibrary from '@mui/icons-material/PhotoLibrary';
 import Divider from '@mui/material/Divider';
-import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
+import avatarDefault from '../../public/images/avatars/pp_boy4.svg';
 import useStyles from './profile-card-style';
 import useClasses from '../../customClasses';
 

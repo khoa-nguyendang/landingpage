@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { lighten, darken } from '@material-ui/core/styles/colorManipulator';
+import { darken, lighten } from "@mui/material";
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   root: {
     position: 'relative',
     [theme.breakpoints.down('sm')]: {
@@ -69,6 +69,6 @@ const useStyles = makeStyles((theme: any ) => ({
     marginLeft: theme.spacing(),
     transform: theme.direction === 'rtl' ? 'rotate(180deg)' : 'none'
   }
-}));
+});
 
 export default useStyles;

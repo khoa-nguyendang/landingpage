@@ -1,14 +1,14 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
-import deepOrange from '@material-ui/core/colors/deepOrange';
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors/red';
-import pink from '@material-ui/core/colors/pink';
-import indigo from '@material-ui/core/colors/indigo';
-import cyan from '@material-ui/core/colors/cyan';
-import green from '@material-ui/core/colors/green';
+import deepPurple from '@mui/material/colors/deepPurple';
+import blue from '@mui/material/colors/blue';
+import red from '@mui/material/colors/red';
+import pink from '@mui/material/colors/pink';
+import indigo from '@mui/material/colors/indigo';
+import cyan from '@mui/material/colors/cyan';
+import green from '@mui/material/colors/green';
+import { deepOrange } from '@mui/material/colors';
+import { alpha } from '@mui/material';
 
-const useStyles = makeStyles((theme: any ) => ({
+const useStyles = (theme: any ) => ({
   blogWrap: {
     marginTop: theme.spacing(5)
   },
@@ -249,6 +249,6 @@ const useStyles = makeStyles((theme: any ) => ({
   flipRtl: {
     transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit'
   }
-}));
+});
 
 export default useStyles;

@@ -7,7 +7,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@mui/icons-material/Info';
 import { useTranslation } from 'react-i18next';
 import Paper from '../../Paper';
 import useStyles from '../list-style';
@@ -43,8 +43,8 @@ function ImageWidget(props: any) {
               return (
                 <ImageListItem key={index.toString()}>
                   <img src={tile.src} className={classes.img} alt="thumb" />
-                  <ImageListItemBar
-                    title={tile.title}
+                  <ImageListItemBar {...props}
+                    title={tile.src}
                     subtitle={(
                       <span>
                         by:&nbsp;

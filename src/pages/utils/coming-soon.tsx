@@ -9,19 +9,20 @@ import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Head from 'next/head';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import Head from '../../components/head';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import { useTranslation } from 'react-i18next';
 import Logo from '../../components/Logo';
 import { useSpacing, useTextAlign, useText } from '../../theme/common';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
 
 function ComingSoon(props: any) {
-  const classes = useSpacing();
-  const align = useTextAlign();
+  const classes = useClasses(useSpacing);
+  const align = useTextAlign;
   const text = useClasses(useText);
   const { t, i18n } = useTranslation();
 
@@ -33,7 +34,7 @@ function ComingSoon(props: any) {
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Coming Soon
@@ -43,7 +44,7 @@ function ComingSoon(props: any) {
       <Container maxWidth="sm">
         <div className={classes.fullScreenContainer}>
           <Grid container alignItems="center">
-            <Grid item md={12} xs={12} className={align.textCenter}>
+            <Grid item md={12} xs={12} style={{textAlign: 'center'}}>
               <Box
                 className={classes.logo}
                 display="flex"
@@ -53,7 +54,7 @@ function ComingSoon(props: any) {
               >
                 <Logo type="landscape" size="large" />
               </Box>
-              <div className={align.textCenter}>
+              <div style={{textAlign: 'center'}}>
                 <h3 className={text.title}>
                   {t('common:util_soon')}
                 </h3>

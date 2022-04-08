@@ -9,7 +9,7 @@ import useClasses from '../../customClasses';
 export default function TitleSecondary(props: any) {
   const classes = useClasses(useStyles);
   const { children, align } = props;
-  const setAlign = alignment => {
+  const setAlign = (alignment: any) => {
     switch (alignment) {
       case 'left':
         return classes.left;

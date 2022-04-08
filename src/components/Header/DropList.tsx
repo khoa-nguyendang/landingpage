@@ -11,13 +11,14 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
 import multiple from './data/multiple';
 import MultiLevel from './TopNav/MultiLevelClick';
 import MobileMenu from './SideNav/MultiMobile';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function Header(props: any) {
@@ -49,7 +50,7 @@ function Header(props: any) {
   };
   return (
     <Fragment>
-      { isMobile && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
+      { isMobile && (<MobileMenu {...props} {...props} open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
       <AppBar
         position="relative"
         id="header"
@@ -83,7 +84,7 @@ function Header(props: any) {
                 </div>
               )}
             </nav>
-            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} {...props}/>
           </div>
         </Container>
       </AppBar>

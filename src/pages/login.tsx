@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import clsx from 'clsx';
-import Head from 'next/head';
+import Head from '../components/head';
 import { useTranslation } from 'react-i18next';
 import { useSpacing } from '../theme/common';
 import Header from '../components/Header/Basic';
@@ -11,17 +11,18 @@ import Login from '../components/Forms/Login';
 import Footer from '../components/Footer';
 import brand from '../public/text/brand';
 import link from '../public/text/link';
+import useClasses from '../customClasses';
 
 function LoginPage(props: any) {
    // Translation Function
   const { t, i18n } = useTranslation();
 
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
 
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Login
@@ -37,7 +38,7 @@ function LoginPage(props: any) {
         />
         <Container>
           <div className={clsx(classes.containerGeneral, classes.containerFront)}>
-            <Login />
+            <Login  {...props}/>
           </div>
         </Container>
         <Footer toggleDir={onToggleDir} />

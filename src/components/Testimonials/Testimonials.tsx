@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 import Carousel from 'react-slick';
 import useStyle from './testi-style';
-import imgAPI from '~/public/images/imgAPI';
+import imgAPI from '../../public/images/imgAPI';
 import { useTranslation } from 'react-i18next';
-import { useText, useTextAlign } from '~/theme/common';
+import { useText, useTextAlign } from '../../theme/common';
 import TestiCard from '../Cards/TestiCard';
 import useClasses from '../../customClasses';
 
@@ -50,10 +50,10 @@ const testiContent = [
 ];
 
 function Testimonials(props: any) {
-  const classes = useStyle();
+  const classes = useClasses(useStyle);
   const { t, i18n } = useTranslation();
 
-  const align = useTextAlign();
+  const align = useTextAlign;
   const text = useClasses(useText);
   const [loaded, setLoaded] = useState(false);
 
@@ -95,13 +95,13 @@ function Testimonials(props: any) {
       <Typography gutterBottom variant="h3" className={clsx(text.capitalize, align.textCenter)} display="block">
         {t('common:starter-landing.header_testimonials')}
       </Typography>
-      <Typography gutterBottom variant="body1" className={align.textCenter} display="block">
+      <Typography gutterBottom variant="body1" style={{textAlign: 'center'}} display="block">
         Curabitur egestas consequat lorem, vel fermentum augue porta id.
       </Typography>
       <div className={classes.carousel}>
         { loaded && (
           <Carousel {...settings}>
-            {testiContent.map((item, index) => (
+            {testiContent.map((item: any, index: number) => (
               <div key={index.toString()} className={classes.item}>
                 <TestiCard
                   text={item.text}

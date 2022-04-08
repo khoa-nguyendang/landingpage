@@ -58,9 +58,9 @@ function Group(props: any) {
                   {t('common:list_comments')}
                 </h4>
               </Box>
-              <Form avatar="/images/avatars/pp_boy2.svg" />
+              <Form avatar="/images/avatars/pp_boy2.svg" {...props}/>
               <List component="div" className={classes.comments}>
-                {comments.map((item, index) => (
+                {comments.map((item: any, index: number) => (
                   <Item
                     key={index.toString()}
                     avatar={item.avatar}
@@ -73,7 +73,7 @@ function Group(props: any) {
               </List>
             </Grid>
             <Grid item sm={4}>
-              <Help />
+              <Help  {...props}/>
             </Grid>
           </Grid>
         </Box>

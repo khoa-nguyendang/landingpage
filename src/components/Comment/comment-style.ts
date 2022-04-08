@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const styles = makeStyles((theme: any ) => ({
+
+const styles = (theme: any ) => ({
   divider: {
     margin: `${theme.spacing(1.5)}px 0`,
   },
@@ -71,6 +71,6 @@ const styles = makeStyles((theme: any ) => ({
     top: 20,
     right: 24
   }
-}));
+});
 
 export default styles;

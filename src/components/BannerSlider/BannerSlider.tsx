@@ -18,7 +18,7 @@ function BannerSlider(props: any) {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
   const { t, i18n } = useTranslation();
-  const slider = useRef(null);
+  const slider = useRef<any>(null);
 
   const [loaded, setLoaded] = useState(false);
   const [curSlide, setCurSlide] = useState(0);
@@ -40,12 +40,12 @@ function BannerSlider(props: any) {
     ]
   };
 
-  const handleAfterChange = currentSlide => {
+  const handleAfterChange = (currentSlide: number) => {
     setCurSlide(currentSlide);
   };
 
-  const gotoSlide = slide => {
-    slider.current.slickGoTo(slide);
+  const gotoSlide = (slide: number) => {
+    slider && slider.current && slider.current.slickGoTo(slide);
   };
 
   useEffect(() => {

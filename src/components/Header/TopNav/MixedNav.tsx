@@ -7,25 +7,26 @@ import PropTypes from 'prop-types';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
+
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
-import Scrollspy from 'react-scrollspy';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Icon from '@mui/material/Icon';
-import { withTranslation, i18n } from '~/i18n';
+
 import useStyles from '../header-style';
 import navMenu from '../data/single';
 import useClasses from '../../../customClasses';
+import { useTranslation } from 'react-i18next';
 
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <a href={(props as any).to} {...props}/>; // eslint-disable-line
 });
 
 function MixedNav(props: any) {
@@ -35,8 +36,7 @@ function MixedNav(props: any) {
     open,
     toggle,
     close,
-    singleNav,
-    t
+    singleNav
   } = props;
   const classes = useClasses(useStyles);
 
@@ -45,8 +45,9 @@ function MixedNav(props: any) {
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
+  const { t, i18n } = useTranslation();
 
-  const handleToggle = (event) => {
+  const handleToggle = (event: any) => {
     setAnchorEl(event.currentTarget);
     toggle();
   };
@@ -54,18 +55,19 @@ function MixedNav(props: any) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   return (
-    <Scrollspy
+    <div
       items={navMenu}
       currentClassName="active"
+      {...props}
     >
-      {menuPrimary.map(item => (
+      {menuPrimary.map((item: any) => (
         <li key={item.id.toString()}>
           {singleNav ? (
-            <Button component={AnchorLink} offset={() => 100} href={item.url}>
+            <Button offset={() => 100} href={item.url} {...props}>
               {t('starter-landing:header_' + item.name)}
             </Button>
           ) : (
@@ -78,7 +80,7 @@ function MixedNav(props: any) {
       <li>
         <div>
           <Button
-            onClick={(e) => handleToggle(e)}
+            onClick={(e: any) => handleToggle(e)}
             ref={anchorRef}
             endIcon={<Icon>expand_more</Icon>}
           >
@@ -101,14 +103,14 @@ function MixedNav(props: any) {
                   <ClickAwayListener onClickAway={close}>
                     <Container maxWidth="md">
                       <Grid container spacing={1}>
-                        {menuSecondary.map((subitem, index) => (
+                        {menuSecondary.map((subitem: any, index: number) => (
                           <Grid item sm={3} key={index.toString()}>
                             <ListSubheader disableSticky component="div" className={classes.titleMega}>
                               {subitem.name}
                             </ListSubheader>
                             <img src={subitem.thumb} alt="thumbnail" className={classes.thumbMenu} />
                             <List component="div">
-                              {subitem.child.map((item, subIndex) => (
+                              {subitem.child.map((item: any, subIndex: any) => (
                                 <ListItem
                                   key={subIndex.toString()}
                                   button
@@ -136,7 +138,7 @@ function MixedNav(props: any) {
           </Popper>
         </div>
       </li>
-    </Scrollspy>
+    </div>
   );
 }
 

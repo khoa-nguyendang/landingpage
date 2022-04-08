@@ -40,12 +40,12 @@ function TopicList(props: any) {
   return (
     <div>
       <Box mb={3}>
-        <h4 className={text.subtitle}>
+        <h4 style={text.subtitle}>
           {t('common:faq_topic')}
         </h4>
       </Box>
       <ul className={classes.topicList}>
-        {topics.map((item, index) => (
+        {topics.map((item: any, index: number) => (
           <li key={index.toString()}>
             <a href={item.href}>{item.title}</a>
           </li>

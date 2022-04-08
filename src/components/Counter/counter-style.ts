@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const counterStyles = makeStyles((theme: any ) => ({
+
+const counterStyles = (theme: any ) => ({
   counterWrap: {
     padding: theme.spacing(8, 0)
   },
@@ -37,6 +37,6 @@ const counterStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default counterStyles;

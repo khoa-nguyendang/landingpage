@@ -7,7 +7,7 @@ import useStyles from './blog-style';
 import useClasses from '../../customClasses';
 
 
-function Blog() {
+function Blog(props: any) {
   const classes = useClasses(useStyles);
   const blogData = [
     {
@@ -41,7 +41,7 @@ function Blog() {
       {/* End hero unit */}
       <div className={classes.blogWrap}>
         <Grid container spacing={4}>
-          {blogData.map((item, index) => (
+          {blogData.map((item: any, index: number) => (
             <Grid item key={index.toString()} xs={12} md={4}>
               <PostCard
                 title={item.title}
@@ -49,6 +49,7 @@ function Blog() {
                 date={item.date}
                 img="https://source.unsplash.com/random"
                 href="/blog/detail-blog"
+                {...props}
               />
             </Grid>
           ))}

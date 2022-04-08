@@ -12,19 +12,19 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import Snackbar from '@mui/material/Snackbar';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'react-i18next';
-import logo from '~/public/images/logo-starter.svg';
-import brand from '~/public/text/brand';
-import { useText, useTextAlign } from '~/theme/common';
+import logo from '../../public/images/logo-starter.svg';
+import brand from '../../public/text/brand';
+import { useText, useTextAlign } from '../../theme/common';
 import useStyles from './contact-style';
 import useClasses from '../../customClasses';
+import { TextField } from '@mui/material';
 
 
 function Contact(props: any) {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
   const { t, i18n } = useTranslation();
   const [values, setValues] = useState({
     name: '',
@@ -36,7 +36,7 @@ function Contact(props: any) {
 
   const [openNotif, setNotif] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -91,7 +91,7 @@ function Contact(props: any) {
                   jenadoe.skype
                 </Typography>
                 <Box mt={8}>
-                  <Typography variant="subtitle2" className={align.textCenter}>
+                  <Typography variant="subtitle2" style={{textAlign: 'center'}}>
                     &copy;&nbsp;
                     {brand.starter.footerText}
                   </Typography>
@@ -121,20 +121,18 @@ function Contact(props: any) {
                   </Grid>
                   <Grid item lg={7} xs={12}>
                     <div className={classes.form}>
-                      <ValidatorForm
+                      <form
                         onSubmit={handleSubmit}
                         onError={errors => console.log(errors)}
                       >
-                        <TextValidator
+                        <TextField
                           className={classes.input}
                           label={t('common:form_name')}
                           onChange={handleChange('name')}
                           name="Name"
                           value={values.name}
-                          validators={['required']}
-                          errorMessages={['this field is required']}
                         />
-                        <TextValidator
+                        <TextField
                           className={classes.input}
                           label={t('common:form_email')}
                           onChange={handleChange('email')}
@@ -142,8 +140,9 @@ function Contact(props: any) {
                           value={values.email}
                           validators={['required', 'isEmail']}
                           errorMessages={['this field is required', 'email is not valid']}
+                          {...props}
                         />
-                        <TextValidator
+                        <TextField
                           multiline
                           rows="6"
                           className={classes.input}
@@ -157,7 +156,7 @@ function Contact(props: any) {
                             {t('common:form_send')}
                           </Button>
                         </div>
-                      </ValidatorForm>
+                      </form>
                     </div>
                   </Grid>
                 </Grid>

@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const notificationStyles = makeStyles((theme: any ) => ({
+
+const notificationStyles = (theme: any ) => ({
   notification: {
     width: '95%',
     [theme.breakpoints.up('lg')]: {
@@ -39,6 +39,6 @@ const notificationStyles = makeStyles((theme: any ) => ({
       margin: 0
     }
   }
-}));
+});
 
 export default notificationStyles;

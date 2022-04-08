@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
-import StarIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@mui/icons-material/StarBorder';
 import useStyles from './pricing-card-style';
 import useClasses from '../../customClasses';
 
@@ -39,7 +39,7 @@ function PricingCard(props: any) {
           </Typography>
         </div>
         <ul>
-          {description.map(line => (
+          {description.map((line: any) => (
             <Typography component="li" variant="subtitle1" align="center" key={line}>
               {line}
             </Typography>

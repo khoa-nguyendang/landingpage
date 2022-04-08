@@ -1,9 +1,8 @@
 import React from 'react';
-import { Head } from 'next/document';
 import brand from '../public/text/brand';
 
-const HeadComponent = () => (
-  <Head>
+const HeadComponent = (props: any) => (
+  <head>
     {/* Use minimum-scale=1 to enable GPU rasterization */}
     <meta
       name="description"
@@ -28,7 +27,6 @@ const HeadComponent = () => (
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
     {/* PWA primary color */}
-    <meta name="theme-color" content={theme.mainTheme.palette.primary.main} />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -59,7 +57,7 @@ const HeadComponent = () => (
     <meta property="og:image" content={brand.starter.img} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-  </Head>
+  </head>
 );
 
 export default HeadComponent;

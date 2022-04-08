@@ -1,23 +1,24 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
-import Head from 'next/head';
+import Head from '../../components/head';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { useSpacing } from '~/theme/common';
+import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header/BlogHeader';
 import Article from '../../components/Blog/Article';
 import Sidebar from '../../components/Blog/Sidebar';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
 
 function BlogDetail(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Blog Detail
@@ -35,7 +36,7 @@ function BlogDetail(props: any) {
             <Container>
               <Grid container spacing={4}>
                 <Grid item md={8} xs={12}>
-                  <Article />
+                  <Article  {...props}/>
                 </Grid>
                 <Grid item md={4} xs={12}>
                   <Sidebar />

@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   logo: {
     fontWeight: theme.typography.fontWeightBold,
     color: theme.palette.text.primary,
@@ -43,6 +43,6 @@ const useStyles = makeStyles((theme: any ) => ({
       height: 64
     }
   }
-}));
+});
 
 export default useStyles;

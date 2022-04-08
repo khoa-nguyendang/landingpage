@@ -10,23 +10,18 @@ import { useTheme } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import SendIcon from '@material-ui/icons/Send';
-import EmailIcon from '@material-ui/icons/Email';
-import PhoneIcon from '@material-ui/icons/LocalPhone';
-import LocationIcon from '@material-ui/icons/LocationOn';
+import SendIcon from '@mui/icons-material/Send';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/LocalPhone';
+import LocationIcon from '@mui/icons-material/LocationOn';
 import Snackbar from '@mui/material/Snackbar';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import {
-  Map,
-  Marker,
-  GoogleApiWrapper,
-  InfoWindow
-} from 'google-maps-react';
-import { useText, useTextAlign } from '~/theme/common';
+
+import { useText, useTextAlign } from '../../theme/common';
 import { useTranslation } from 'react-i18next';
 import useStyles from './form-style';
-import Checkbox from './Checkbox';
+
 import useClasses from '../../customClasses';
+import { Checkbox, TextField } from '@mui/material';
 
 
 function BubleMark() {
@@ -62,60 +57,11 @@ function BubleMark() {
   );
 }
 
-function MapContainer(props: any) {
-  const [activeMarker, setActive] = useState({});
-  const [showingInfoWindow, setShow] = useState(false);
-  const { google } = props;
-  // eslint-disable-next-line
-  const onMarkerClick = (props, marker) => {
-    setActive(marker);
-    setShow(true);
-  };
-
-  const onMapClicked = () => {
-    if (showingInfoWindow) {
-      setShow(false);
-      setActive(null);
-    }
-  };
-
-  return (
-    <Map
-      google={google}
-      onClick={onMapClicked}
-      style={{ width: '100%', height: '915px', position: 'relative' }}
-      initialCenter={{
-        lat: 37.759703,
-        lng: -122.428093
-      }}
-      zoom={14}
-    >
-      <Marker
-        onClick={onMarkerClick}
-        position={{ lat: 37.759703, lng: -122.428093 }}
-      />
-      <InfoWindow
-        marker={activeMarker}
-        visible={showingInfoWindow}
-      >
-        <div>
-          <BubleMark />
-        </div>
-      </InfoWindow>
-    </Map>
-  );
-}
-
-MapContainer.propTypes = {
-  google: PropTypes.object.isRequired
-};
-
-const MapWithAMarker = GoogleApiWrapper({ apiKey: null })(MapContainer);
 
 function ContactMap(props: any) {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
   const { t, full } = props;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -127,15 +73,12 @@ function ContactMap(props: any) {
     message: ''
   });
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isTruthy', value => value);
-  });
 
   const [openNotif, setNotif] = useState(false);
 
   const [check, setCheck] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -177,38 +120,34 @@ function ContactMap(props: any) {
                     <p className={clsx(align.textCenter, text.subtitle2)}>
                       {t('common:contact_subtitle')}
                     </p>
-                    <ValidatorForm
+                    <form
                       onSubmit={handleSubmit}
                       onError={errors => console.log(errors)}
                     >
                       <Box py={3}>
                         <Grid container spacing={6}>
                           <Grid item xs={12}>
-                            <TextValidator
+                            <TextField
                               className={classes.input}
                               fullWidth
                               label={t('common:form_name')}
                               onChange={handleChange('name')}
                               name="Name"
                               value={values.name}
-                              validators={['required']}
-                              errorMessages={['This field is required']}
                             />
                           </Grid>
                           <Grid item xs={12}>
-                            <TextValidator
+                            <TextField
                               className={classes.input}
                               fullWidth
                               label={t('common:form_email')}
                               onChange={handleChange('email')}
                               name="Email"
                               value={values.email}
-                              validators={['required', 'isEmail']}
-                              errorMessages={['This field is required', 'email is not valid']}
                             />
                           </Grid>
                           <Grid item xs={12}>
-                            <TextValidator
+                            <TextField
                               className={classes.input}
                               fullWidth
                               label={t('common:form_phone')}
@@ -218,7 +157,7 @@ function ContactMap(props: any) {
                             />
                           </Grid>
                           <Grid item xs={12}>
-                            <TextValidator
+                            <TextField
                               multiline
                               rows="6"
                               fullWidth
@@ -239,8 +178,9 @@ function ContactMap(props: any) {
                             errorMessages="This field is required"
                             checked={check}
                             value={check}
-                            onChange={(e) => handleCheck(e)}
+                            onChange={(e: any) => handleCheck(e)}
                             color="primary"
+                            {...props}
                           />
                         )}
                         label={(
@@ -260,14 +200,13 @@ function ContactMap(props: any) {
                           <SendIcon className={classes.rightIcon} />
                         </Button>
                       </div>
-                    </ValidatorForm>
+                    </form>
                   </div>
                 </div>
               </Paper>
             </Grid>
             <Grid item md={6} xs={12}>
               <Paper className={clsx(classes.map, full ? classes.full : '')} elevation={0}>
-                <MapWithAMarker />
               </Paper>
             </Grid>
           </Grid>

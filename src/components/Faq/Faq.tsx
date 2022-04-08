@@ -10,10 +10,10 @@ import Hidden from '@mui/material/Hidden';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'react-i18next';
-import { useText, useTextAlign } from '~/theme/common';
+import { useText, useTextAlign } from '../../theme/common';
 import useStyles from './faq-style';
 import useClasses from '../../customClasses';
 
@@ -44,12 +44,12 @@ const faqData = [
 function Faq(props: any) {
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const { t, i18n } = useTranslation();
   const [expanded, setExpanded] = React.useState(0);
-  const handleChange = panel => (event, newExpanded) => {
+  const handleChange = (panel: any) => (event: any, newExpanded: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   return (
@@ -73,7 +73,7 @@ function Faq(props: any) {
           </Grid>
           <Grid item md={6}>
             <div className={classes.accordion}>
-              {faqData.map((item, index) => (
+              {faqData.map((item: any, index: number) => (
                 <div className={classes.item} key={index.toString()}>
                   <Accordion
                     classes={{

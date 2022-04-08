@@ -5,24 +5,25 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
-import Build from '@material-ui/icons/Build';
+import Build from '@mui/icons-material/Build';
 import Hidden from '@mui/material/Hidden';
-import Settings from '@material-ui/icons/SettingsApplications';
-import Warning from '@material-ui/icons/Warning';
+import Settings from '@mui/icons-material/SettingsApplications';
+import Warning from '@mui/icons-material/Warning';
 import { useTranslation } from 'react-i18next';
 import { useSpacing, useTextAlign, useText } from '../../theme/common';
 import brand from '../../public/text/brand';
 import Head from '../../components/head';
+import useClasses from '../../customClasses';
 
 function Maintenance(props: any) {
-  const classes = useSpacing();
-  const align = useTextAlign();
+  const classes = useClasses(useSpacing);
+  const align = useTextAlign;
   const text = useClasses(useText);
   const { t, i18n } = useTranslation();
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Maintenance
@@ -32,7 +33,7 @@ function Maintenance(props: any) {
       <Container maxWidth="md">
         <div className={classes.fullScreenContainer}>
           <Grid container alignItems="center" justifyContent="center">
-            <Grid item md={12} className={align.textCenter}>
+            <Grid item md={12} style={{textAlign: 'center'}}>
               <Box display="flex" justifyContent="center">
                 <Avatar className={classes.maintenanceIcon}><Build /></Avatar>
                 <Hidden xsDown>
@@ -42,7 +43,7 @@ function Maintenance(props: any) {
                   <Avatar className={classes.maintenanceIcon}><Warning /></Avatar>
                 </Hidden>
               </Box>
-              <div className={align.textCenter}>
+              <div style={{textAlign: 'center'}}>
                 <h3 className={text.title2}>
                   {t('common:util_maintenance')}
                 </h3>

@@ -19,7 +19,7 @@ function SubscribeForm(props: any) {
   const [values, setValues] = useState({
     email: '',
   });
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 

@@ -1,18 +1,17 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { makeStyles } from '@mui/material/styles';
+import Head from '../components/head';
 import Error from '../components/Error';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import brand from '../public/text/brand';
-import { withTranslation } from '../i18n';
+import useClasses from '../customClasses';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme: any) => ({
   dedicatedPage: {
     background: theme.palette.type === 'dark' ? theme.palette.background.default : theme.palette.background.paper,
   }
-}));
+});
 
 function ErrorPage(props: any) {
   const classes = useClasses(useStyles);
@@ -22,7 +21,7 @@ function ErrorPage(props: any) {
   if (errorCode) {
     return (
       <Fragment>
-        <Head>
+        <Head {...props}>
           <title>
             { brand.starter.name }
             &nbsp; -&nbsp;
@@ -30,9 +29,9 @@ function ErrorPage(props: any) {
           </title>
         </Head>
         <div className={classes.dedicatedPage}>
-          <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert />
-          <Error errorCode={errorCode} text={t('common:404')} />
-          <Footer onToggleDir={onToggleDir} />
+          <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert {...props} />
+          <Error errorCode={errorCode} text={t('common:404')} {...props}/>
+          <Footer onToggleDir={onToggleDir} {...props}/>
         </div>
       </Fragment>
     );

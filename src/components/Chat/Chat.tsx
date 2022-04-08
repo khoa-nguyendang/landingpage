@@ -4,8 +4,8 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 import Fab from '@mui/material/Fab';
 import TextField from '@mui/material/TextField';
-import visitorAvatar from '~/public/images/avatars/pp_boy4.svg';
-import { useFlexBox } from '~/theme/common';
+import visitorAvatar from '../public/images/avatars/pp_boy4.svg';
+import { useFlexBox } from '../../theme/common';
 import useStyles from './chat-style';
 import useClasses from '../../customClasses';
 
@@ -28,7 +28,7 @@ function Chat() {
     }
   ]);
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setMessage(event.target.value);
   };
 
@@ -39,12 +39,12 @@ function Chat() {
       // scroll to bottom
       const ctn = document.getElementById('chat-container');
       setTimeout(() => {
-        ctn.scrollTo(0, ctn.scrollHeight);
+        ctn && ctn.scrollTo(0, ctn.scrollHeight);
       }, 300);
     }
   };
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: any) => {
     if (event.key === 'Enter') {
       handleSend();
     }
@@ -78,7 +78,7 @@ function Chat() {
         </header>
         <div className={classes.chatRoom} id="chat-container">
           <ul>
-            {conversation.map((item, index) => (
+            {conversation.map((item: any, index: number) => (
               <li
                 key={index.toString()}
                 className={clsx(classes.item, item.visitor ? flex.justifyEnd : '')}
@@ -100,8 +100,8 @@ function Chat() {
         </div>
         <div className={classes.form}>
           <TextField
-            onKeyPress={(e) => handleKeyPress(e)}
-            onChange={(e) => handleChange(e)}
+            onKeyPress={(e: any) => handleKeyPress(e)}
+            onChange={(e: any) => handleChange(e)}
             value={message}
             label="Ask something"
             className={classes.input}

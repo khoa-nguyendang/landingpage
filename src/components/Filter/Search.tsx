@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
-import { useText, useTextAlign } from '~/theme/common';
+import { useText, useTextAlign } from '../../theme/common';
 import useStyles from './filter-style';
 import useClasses from '../../customClasses';
 
@@ -16,7 +16,7 @@ function Search(props: any) {
   const { t, value, updateValue } = props;
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
 
   const handleUpdateValue = (event : any) => {
     updateValue(event.target.value);
@@ -37,11 +37,10 @@ function Search(props: any) {
               <FormControl component="form">
                 <OutlinedInput
                   value={value}
-                  onChange={(e) => handleUpdateValue(e)}
+                  onChange={(e: any) => handleUpdateValue(e)}
                   className={classes.input}
                   placeholder={t('common:list_search')}
                   startAdornment={<SearchIcon />}
-                  labelWidth={0}
                 />
               </FormControl>
             </div>

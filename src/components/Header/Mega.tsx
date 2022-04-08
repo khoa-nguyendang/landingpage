@@ -8,19 +8,20 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import MobileMenu from './SideNav/MegaMobile';
 import HeaderMenu from './TopNav/MegaMenu';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
 import mega from './data/mega';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function Mega(props: any) {
   const [fixed, setFixed] = useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [openMenu, setOpenMenu] = useState({});
+  const [openMenu, setOpenMenu] = useState<{[key: string]: any}>({});
   const classes = useClasses(useStyles);
   const theme = useTheme();
   const { onToggleDark, onToggleDir } = props;
@@ -46,7 +47,7 @@ function Mega(props: any) {
     setOpenDrawer(!openDrawer);
   };
 
-  const handleToggle = (id) => {
+  const handleToggle = (id: any) => {
     if (openMenu[id] !== undefined) {
       console.log('isi');
       setOpenMenu({
@@ -74,7 +75,7 @@ function Mega(props: any) {
 
   return (
     <Fragment>
-      { isMobile && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
+      { isMobile && (<MobileMenu {...props} open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
       <AppBar
         position="relative"
         id="header"
@@ -106,7 +107,7 @@ function Mega(props: any) {
               {isDesktop && (
                 <ClickAwayListener onClickAway={handleClose}>
                   <div className={classes.mainMenu}>
-                    <HeaderMenu
+                    <HeaderMenu {...props}
                       open={openMenu}
                       dataMenu={mega}
                       toggle={handleToggle}
@@ -115,7 +116,7 @@ function Mega(props: any) {
                 </ClickAwayListener>
               )}
             </nav>
-            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} {...props}/>
           </div>
         </Container>
       </AppBar>

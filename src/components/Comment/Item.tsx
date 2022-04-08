@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
+import avatarDefault from '../../public/images/avatars/pp_boy4.svg';
 import useStyles from './comment-style';
 import useClasses from '../../customClasses';
 

@@ -1,29 +1,31 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { useSpacing } from '~/theme/common';
-import { withTranslation } from '~/i18n';
+import CssBaseline from '@mui/material/CssBaseline';
+import Head from '../../components/head';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header/BlogHeader';
 import Headline from '../../components/Blog/Headline';
 import PostCard from '../../components/Cards/PostCard';
 import Sidebar from '../../components/Blog/Sidebar';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
+import { useTranslation } from 'react-i18next';
 import link from '../../public/text/link';
 
-function BlogHome(props) {
-  const classes = useSpacing();
-  const { onToggleDark, onToggleDir, t } = props;
+function BlogHome(props: any) {
+  const classes = useClasses(useSpacing);
+  const { t, i18n } = useTranslation();
+  const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Blog
@@ -47,7 +49,7 @@ function BlogHome(props) {
               <Box mt={8}>
                 <Grid container spacing={3}>
                   <Grid item md={6} xs={12}>
-                    <PostCard
+                    <PostCard {...props}
                       href={link.starter.blogDetail}
                       img="https://source.unsplash.com/random"
                       title="Maecenas rutrum dolor sed nisi"
@@ -58,7 +60,7 @@ function BlogHome(props) {
                     />
                   </Grid>
                   <Grid item md={6} xs={12}>
-                    <PostCard
+                    <PostCard {...props}
                       href={link.starter.blogDetail}
                       img="https://source.unsplash.com/random"
                       title="Maecenas rutrum dolor sed nisi"
@@ -78,7 +80,7 @@ function BlogHome(props) {
                         key={index.toString()}
                         mt={index > 0 ? 6 : 0}
                       >
-                        <PostCard
+                        <PostCard  {...props}
                           href={link.starter.blogDetail}
                           img="https://source.unsplash.com/random"
                           title="Maecenas rutrum dolor sed nisi"
@@ -128,4 +130,4 @@ BlogHome.propTypes = {
   onToggleDir: PropTypes.func.isRequired,
 };
 
-export default withTranslation(['common'])(BlogHome);
+export default BlogHome;

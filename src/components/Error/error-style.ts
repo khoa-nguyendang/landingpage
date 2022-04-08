@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   errorWrap: {
     width: '100%',
     display: 'flex',
@@ -53,6 +53,6 @@ const useStyles = makeStyles((theme: any ) => ({
   button: {
     marginTop: theme.spacing(4)
   }
-}));
+});
 
 export default useStyles;

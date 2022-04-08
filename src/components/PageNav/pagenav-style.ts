@@ -1,6 +1,6 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { alpha } from "@mui/material";
 
-const pagenav = makeStyles((theme: any ) => ({
+const pagenav = (theme: any ) => ({
   show: {},
   fab: {
     transform: 'scale(0.5)',
@@ -83,6 +83,6 @@ const pagenav = makeStyles((theme: any ) => ({
     background: theme.palette.primary.dark,
     fontSize: 14
   },
-}));
+});
 
 export default pagenav;

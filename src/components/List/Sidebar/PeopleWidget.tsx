@@ -51,7 +51,7 @@ function PeopleWidget(props: any) {
     <Paper title="You may know" icon="ion-android-people" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
       <div className={classes.profileList}>
         <List dense>
-          {people.map((item, index) => (
+          {people.map((item: any, index: number) => (
             <ListItem disableGutters key={index.toString()} button>
               <Avatar className={classes.avatar} alt="avatar" src={item.img} title="avatar" />
               <ListItemText primary={item.name} secondary={item.title} />

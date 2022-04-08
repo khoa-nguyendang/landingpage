@@ -4,7 +4,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import clsx from 'clsx';
-import Head from 'next/head';
+import Head from '../../components/head';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { useSpacing } from '../../theme/common';
@@ -18,7 +18,8 @@ import CompanyLogo from '../../components/CompanyLogo';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
 import { useTranslation } from 'react-i18next';
-import { useTextAlign, useText } from '~/theme/common';
+import { useTextAlign, useText } from '../../theme/common';
+import useClasses from '../../customClasses';
 
 function Team(props: any) {
   // Theme breakpoints
@@ -28,14 +29,14 @@ function Team(props: any) {
    // Translation Function
   const { t, i18n } = useTranslation();
 
-  const classes = useSpacing();
-  const align = useTextAlign();
+  const classes = useClasses(useSpacing);
+  const align = useTextAlign;
   const text = useClasses(useText);
 
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - About
@@ -67,9 +68,9 @@ function Team(props: any) {
           </Container>
         </div>
         <div className={clsx(classes.spaceTopShort, classes.spaceBottomShort)}>
-          <PhotoSlider />
+          <PhotoSlider {...props}/>
         </div>
-        <CallAction />
+        <CallAction  {...props}/>
         <Footer toggleDir={onToggleDir} />
       </div>
     </Fragment>

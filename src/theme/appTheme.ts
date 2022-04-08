@@ -1,9 +1,9 @@
-import palette from './palette';
-const appTheme = (color, mode) => ({
+import {mainTheme} from './palette';
+const appTheme = (color: any, mode: any) => ({
   palette: {
     type: mode,
-    primary: palette[color].palette.primary,
-    secondary: palette[color].palette.secondary,
+    primary: mainTheme.palette.primary,
+    secondary: mainTheme.palette.secondary,
     action: {
       hover: mode === 'dark' ? 'rgba(128,128,128, 0.9)' : 'rgba(128,128,128, 0.05)',
       hoverOpacity: 0.05
@@ -111,25 +111,25 @@ const appTheme = (color, mode) => ({
         fontWeight: 600,
       },
       outlinedPrimary: {
-        borderColor: mode === 'dark' ? palette[color].palette.primary.light : palette[color].palette.primary.main,
-        color: mode === 'dark' ? palette[color].palette.primary.light : palette[color].palette.primary.dark,
+        borderColor: mode === 'dark' ? mainTheme.palette.primary.light : mainTheme.palette.primary.main,
+        color: mode === 'dark' ? mainTheme.palette.primary.light : mainTheme.palette.primary.dark,
       },
       outlinedSecondary: {
-        borderColor: mode === 'dark' ? palette[color].palette.secondary.light : palette[color].palette.secondary.main,
-        color: mode === 'dark' ? palette[color].palette.secondary.light : palette[color].palette.secondary.main,
+        borderColor: mode === 'dark' ? mainTheme.palette.secondary.light : mainTheme.palette.secondary.main,
+        color: mode === 'dark' ? mainTheme.palette.secondary.light : mainTheme.palette.secondary.main,
       }
     },
     MuiFormLabel: {
       root: {
         '&$focused': {
-          color: palette[color].palette.primary.main,
+          color: mainTheme.palette.primary.main,
         }
       }
     },
     MuiInput: {
       underline: {
         '&:after': {
-          borderBottomColor: palette[color].palette.primary.main,
+          borderBottomColor: mainTheme.palette.primary.main,
         }
       }
     },

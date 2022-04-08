@@ -2,24 +2,25 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import LangIcon from '@material-ui/icons/Language';
+import LangIcon from '@mui/icons-material/Language';
 import InputAdornment from '@mui/material/InputAdornment';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
-import Select from '@mui/material/Select';
+import Select, { SelectClasses } from '@mui/material/Select';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/logo-starter.svg';
-import brand from '~/public/text/brand';
-import img from '~/public/images/imgAPI';
-import { i18n, withTranslation } from '~/i18n';
+import logo from '../../public/images/logo-starter.svg';
+import brand from '../../public/text/brand';
+import img from '../../public/images/imgAPI';
+import { useTranslation } from 'react-i18next';
 import useStyles from './blog-style';
 import useClasses from '../../customClasses';
 
 
 function Copyright() {
+    const { t, i18n } = useTranslation();
   return (
     <Typography variant="body2" display="block" align="center" color="textSecondary">
       &copy;&nbsp;
@@ -53,8 +54,8 @@ const news = [
 ];
 
 function Blog(props: any) {
-  const [ctn, setCtn] = useState(null);
-  const classes = useClasses(useStyles);
+  const [ctn, setCtn] = useState< HTMLElement | null>(null);
+  const classes: any | undefined = useClasses(useStyles);
   const { t, i18n } = useTranslation();
   const [values, setValues] = useState({
     lang: 'eng',
@@ -65,7 +66,7 @@ function Blog(props: any) {
     setCtn(document.getElementById('main-wrap'));
   }, []);
 
-  function handleChange(event) {
+  function handleChange(event: any) {
     setValues(oldValues => ({
       ...oldValues,
       [event.target.name]: event.target.value,
@@ -98,7 +99,7 @@ function Blog(props: any) {
                 {t('common:footer_link')}
               </Typography>
               <ul>
-                {footer.description.map((item, index) => (
+                {footer.description.map((item: any, index: number) => (
                   <li key={item}>
                     <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
                       {item}
@@ -109,7 +110,7 @@ function Blog(props: any) {
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
-            {news.map((item, index) => (
+            {news.map((item: any, index: number) => (
               <ButtonBase className={classes.blogItem} href="#" key={index.toString()}>
                 <figure>
                   <img src={item.img} alt="thumb" />
@@ -150,10 +151,7 @@ function Blog(props: any) {
                 </InputAdornment>
               )}
               className={classes.selectLang}
-              classes={{
-                selectMenu: classes.selectMenu
-              }}
-              input={<OutlinedInput labelWidth={200} name="lang" id="outlined-lang-simple" />}
+              input={<OutlinedInput name="lang" id="outlined-lang-simple" />}
             >
               <MenuItem value="eng">English</MenuItem>
               <MenuItem value="deu">Deutsch</MenuItem>
@@ -161,6 +159,7 @@ function Blog(props: any) {
               <MenuItem value="ind">Bahasa Indonesia</MenuItem>
               <MenuItem value="prt">Português</MenuItem>
               <MenuItem value="zho">简体中文</MenuItem>
+              <MenuItem value="vi">Tiếng Việt</MenuItem>
             </Select>
             <Copyright />
           </Grid>

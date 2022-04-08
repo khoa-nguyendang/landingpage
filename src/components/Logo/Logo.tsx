@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import logo from '~/public/images/logo-starter.svg';
-import brand from '~/public/text/brand';
+import logo from '../../public/images/logo-starter.svg';
+import brand from '../../public/text/brand';
 import useStyles from './logo-style';
 import useClasses from '../../customClasses';
 

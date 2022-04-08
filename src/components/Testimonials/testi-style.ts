@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const testiStyles = makeStyles((theme: any ) => ({
+
+const testiStyles = (theme: any ) => ({
   testimonialWrap: {
     width: '100%',
     position: 'relative',
@@ -12,6 +12,6 @@ const testiStyles = makeStyles((theme: any ) => ({
   item: {
     padding: theme.spacing(2)
   },
-}));
+});
 
 export default testiStyles;

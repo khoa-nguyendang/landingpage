@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const faqStyles = makeStyles((theme: any ) => ({
+
+const faqStyles = (theme: any ) => ({
   root: {
     position: 'relative',
     backgroundSize: '100%',
@@ -90,6 +90,6 @@ const faqStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default faqStyles;

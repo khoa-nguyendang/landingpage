@@ -6,14 +6,13 @@ import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'react-i18next';
 import { useText } from '../../theme/common';
-import Checkbox from './Checkbox';
 import SocialAuth from './SocialAuth';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 import useClasses from '../../customClasses';
+import { Checkbox, TextField } from '@mui/material';
 
 
 function Register(props: any) {
@@ -30,19 +29,10 @@ function Register(props: any) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
-      if (value !== values.password) {
-        return false;
-      }
-      return true;
-    });
-    ValidatorForm.addValidationRule('isTruthy', value => value);
-  });
 
   const [check, setCheck] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -66,13 +56,13 @@ function Register(props: any) {
         <div className={classes.separator}>
           <Typography>{t('common:register_or')}</Typography>
         </div>
-        <ValidatorForm
+        <form
           onError={errors => console.log(errors)}
           onSubmit={handleSubmit}
         >
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 className={classes.input}
                 label={t('common:register_name')}
@@ -80,12 +70,10 @@ function Register(props: any) {
                 name="name"
                 fullWidth
                 value={values.name}
-                validators={['required']}
-                errorMessages={['This field is required']}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 className={classes.input}
                 fullWidth
@@ -93,33 +81,27 @@ function Register(props: any) {
                 onChange={handleChange('email')}
                 name="email"
                 value={values.email}
-                validators={['required', 'isEmail']}
-                errorMessages={['This field is required', 'Email is not valid']}
               />
             </Grid>
             <Grid item md={6} xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 type="password"
                 className={classes.input}
                 label={t('common:register_password')}
-                validators={['required']}
                 fullWidth
                 onChange={handleChange('password')}
-                errorMessages={['This field is required']}
                 name="password"
                 value={values.password}
               />
             </Grid>
             <Grid item md={6} xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 type="password"
                 className={classes.input}
                 fullWidth
                 label={t('common:register_confirm')}
-                validators={['isPasswordMatch', 'required']}
-                errorMessages={['Password mismatch', 'this field is required']}
                 onChange={handleChange('confirmPassword')}
                 name="confirm"
                 value={values.confirmPassword}
@@ -134,8 +116,9 @@ function Register(props: any) {
                   errorMessages="This field is required"
                   checked={check}
                   value={check}
-                  onChange={(e) => handleCheck(e)}
+                  onChange={(e: any) => handleCheck(e)}
                   color="primary"
+                  {...props}
                 />
               )}
               label={(
@@ -158,7 +141,7 @@ function Register(props: any) {
               {t('common:continue')}
             </Button>
           </div>
-        </ValidatorForm>
+        </form>
       </div>
     </AuthFrame>
   );

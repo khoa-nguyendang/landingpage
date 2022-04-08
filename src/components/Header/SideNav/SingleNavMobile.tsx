@@ -6,12 +6,12 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { i18n, withTranslation } from '~/i18n';
-import link from '~/public/text/link';
+import { useTranslation } from 'react-i18next';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import useStyles from '../sidenav-style';
 import navMenu from '../data/single';
 import useClasses from '../../../customClasses';
-
+import link from '../../../public/text/link';
 
 function SingleNavMobile(props: any) {
   const classes = useClasses(useStyles);
@@ -25,7 +25,7 @@ function SingleNavMobile(props: any) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   const SideList = () => (
@@ -37,13 +37,14 @@ function SingleNavMobile(props: any) {
     >
       <div className={clsx(classes.menu, open && classes.menuOpen)}>
         <List className={classes.sideSinglelv}>
-          {navMenu.map((item, index) => (
+          {navMenu.map((item: any, index: number) => (
             <ListItem
               button
               component="a"
               href={`#${item}`}
               key={item}
               index={index.toString()}
+              {...props}
             >
               <ListItemText primary={item} className={classes.menuList} />
             </ListItem>
@@ -56,7 +57,7 @@ function SingleNavMobile(props: any) {
               key={index.toString()}
               className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
               component="a"
-              href={link.starter[text]}
+              href={(link.starter as any)[text]}
               button
             >
               <ListItemText className={classes.menuList} primary={t('common:' + text)} />

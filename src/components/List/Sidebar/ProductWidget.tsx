@@ -38,7 +38,7 @@ function ProfileWidget(props: any) {
     <Paper title={t('common:list_related')} icon="ion-ios-pricetag" whiteBg desc="Donec commodo convallis ligula eget suscipit orci.">
       <div className={classes.albumRoot}>
         <Grid container spacing={2}>
-          {products.map((item, index) => (
+          {products.map((item: any, index: number) => (
             <Grid
               key={index.toString()}
               item

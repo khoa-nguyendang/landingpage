@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   root: {
     padding: theme.spacing(3, 1),
     boxShadow: theme.shade.light,
@@ -92,6 +92,6 @@ const useStyles = makeStyles((theme: any ) => ({
       }
     }
   },
-}));
+});
 
 export default useStyles;

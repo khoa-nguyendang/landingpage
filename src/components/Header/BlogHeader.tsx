@@ -12,7 +12,7 @@ import Hidden from '@mui/material/Hidden';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import SearchField from './TopNav/SearchField';
 import Settings from './TopNav/Settings';
 import useStyles from './header-style';
@@ -20,6 +20,7 @@ import multiple from './data/multiple';
 import MultiLevel from './TopNav/MultiLevelClick';
 import MobileMenu from './SideNav/MultiMobile';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function BlogHeader(props: any) {
@@ -51,7 +52,7 @@ function BlogHeader(props: any) {
   };
   return (
     <Fragment>
-      { isMobile && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
+      { isMobile && (<MobileMenu {...props} open={openDrawer} toggleDrawer={handleOpenDrawer} {...props}/>) }
       <AppBar
         position="relative"
         id="header"
@@ -87,14 +88,14 @@ function BlogHeader(props: any) {
             </nav>
             <nav>
               <Hidden xsDown>
-                <SearchField short />
+                <SearchField short  {...props}/>
               </Hidden>
               { isDesktop && <span className={classes.vDivider} /> }
-              <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
+              <Settings {...props} toggleDark={onToggleDark} toggleDir={onToggleDir} />
             </nav>
           </div>
           <Hidden smUp>
-            <SearchField />
+            <SearchField  {...props}/>
           </Hidden>
         </Container>
       </AppBar>

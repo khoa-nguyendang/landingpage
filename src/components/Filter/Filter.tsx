@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Rating from '@material-ui/lab/Rating';
+import Rating from '@mui/material/Rating';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
@@ -36,11 +36,11 @@ function Filter(props: any) {
     filterRadio, changeRadio
   } = props;
 
-  const handleChangeCategory = (event, cat) => {
+  const handleChangeCategory = (event: any, cat: any) => {
     changeCategory(cat);
   };
 
-  const handleChangeRating = (event, rating) => {
+  const handleChangeRating = (event: any, rating: any) => {
     changeRating(rating);
   };
 
@@ -50,21 +50,21 @@ function Filter(props: any) {
     if (event.target.checked) {
       changeTag([...filterTag, val]);
     } else {
-      changeTag(currentTag => currentTag.filter((tag, i) => i !== index));
+      changeTag((currentTag: any) => currentTag.filter((tag: any, i: number) => i !== index));
     }
   };
 
-  const handleChangeRange = (event) => {
+  const handleChangeRange = (event: any) => {
     setRange({ ...range, [event.target.name]: Number(event.target.value) });
   };
 
-  const handleChangeCheck = (event) => {
+  const handleChangeCheck = (event: any) => {
     const val = event.target.value;
     const index = filterCheck.indexOf(val);
     if (event.target.checked) {
       changeCheck([...filterCheck, val]);
     } else {
-      changeCheck(currentCheck => currentCheck.filter((check, i) => i !== index));
+      changeCheck((currentCheck: any) => currentCheck.filter((check: any, i: number) => i !== index));
     }
   };
 
@@ -72,7 +72,7 @@ function Filter(props: any) {
     checkAll();
   };
 
-  const handleChangeRadio = (event) => {
+  const handleChangeRadio = (event: any) => {
     changeRadio(event.target.value);
   };
 
@@ -275,7 +275,7 @@ function Filter(props: any) {
           <Grid container>
             <Grid item xs={5}>
               <FormControl component="div" className={classes.formControl}>
-                <Input placeholder="From" name="from" type="number" value={range.from} onChange={(e) => handleChangeRange(e)} />
+                <Input placeholder="From" name="from" type="number" value={range.from} onChange={(e: any) => handleChangeRange(e)} />
               </FormControl>
             </Grid>
             <Grid item xs={2}>
@@ -285,7 +285,7 @@ function Filter(props: any) {
             </Grid>
             <Grid item xs={5}>
               <FormControl component="div" className={classes.formControl}>
-                <Input placeholder="To" name="to" type="number" value={range.to} onChange={(e) => handleChangeRange(e)} />
+                <Input placeholder="To" name="to" type="number" value={range.to} onChange={(e: any) => handleChangeRange(e)} />
               </FormControl>
             </Grid>
           </Grid>

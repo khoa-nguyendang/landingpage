@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import { useTranslation } from 'react-i18next';
 import useStyles from '../header-style';
 import useClasses from '../../../customClasses';
@@ -23,11 +23,12 @@ function SearchField(props: any) {
       <FormControl component="form" className={classes.root}>
         <OutlinedInput
           value={value}
-          onChange={(e) => handleUpdateValue(e)}
+          onChange={(e: any) => handleUpdateValue(e)}
           className={classes.input}
           placeholder={t('common:list_search')}
           startAdornment={<SearchIcon className={classes.searchIcon} />}
           labelWidth={0}
+          {...props}
         />
       </FormControl>
     </section>

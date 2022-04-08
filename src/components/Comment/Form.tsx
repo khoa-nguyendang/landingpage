@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
-import Send from '@material-ui/icons/Send';
+import Send from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
-import avatarDefault from '~/public/images/avatars/pp_boy4.svg';
+import avatarDefault from '../../public/images/avatars/pp_boy4.svg';
 import useStyles from './comment-style';
 import useClasses from '../../customClasses';
 

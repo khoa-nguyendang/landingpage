@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   profileList: {
     padding: 0,
     margin: '0 -24px -24px',
@@ -245,6 +245,6 @@ const useStyles = makeStyles((theme: any ) => ({
       flexWrap: 'nowrap'
     }
   }
-}));
+});
 
 export default useStyles;

@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
-import flag from '~/public/images/flag-logo.png';
+
+import flag from '../../public/images/flag-logo.png';
 
 const flagIcon = {
   width: 16,
@@ -31,7 +31,7 @@ const flagIcon = {
   },
 };
 
-const headerStyles = makeStyles((theme: any ) => ({
+const headerStyles = (theme: any ) => ({
   fixed: {},
   openDrawer: {},
   header: {
@@ -337,6 +337,6 @@ const headerStyles = makeStyles((theme: any ) => ({
     textTransform: 'capitalize',
     fontSize: 14
   }
-}));
+});
 
 export default headerStyles;

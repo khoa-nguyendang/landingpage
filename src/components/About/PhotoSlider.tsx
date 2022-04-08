@@ -6,8 +6,8 @@ import Container from '@mui/material/Container';
 import Lightbox from 'react-image-lightbox';
 import IconButton from '@mui/material/IconButton';
 import ButtonBase from '@mui/material/ButtonBase';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Carousel from 'react-slick';
 import { useText } from '../../theme/common';
 import { useTranslation } from 'react-i18next';
@@ -65,14 +65,14 @@ function PhotoSlider(props: any) {
     }, []);
 
     const handleNext = () => {
-        slider.current.slickNext();
+        slider && slider.current && (slider.current as any)!.slickNext();
     };
 
     const handlePrev = () => {
-        slider.current.slickPrev();
+        slider && slider.current && (slider.current as any)!.slickPrev();
     };
 
-    function showPopup(index) {
+    function showPopup(index: any) {
         setOpen(true);
         setPhotoIndex(index);
     }
@@ -115,7 +115,7 @@ function PhotoSlider(props: any) {
                             <ArrowBackIcon />
                         </IconButton>
                         <Carousel ref={slider} {...settings}>
-                            {imgData.map((item, index) => (
+                            {imgData.map((item: any, index: number) => (
                                 <ButtonBase
                                     key={index.toString()}
                                     className={classes.item}

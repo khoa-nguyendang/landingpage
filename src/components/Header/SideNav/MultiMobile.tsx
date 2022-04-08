@@ -6,29 +6,29 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
-import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import ArrowDropUp from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 import Collapse from '@mui/material/Collapse';
-import { i18n, withTranslation } from '~/i18n';
+import { useTranslation } from 'react-i18next';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/multiple';
-import link from '~/public/text/link';
 import useClasses from '../../../customClasses';
+import link from '../../../public/text/link';
 
 
 function MobileMenu(props: any) {
   const classes = useClasses(useStyles);
   const { toggleDrawer, open } = props;
-  const [expand, setExpand] = useState({});
+  const [expand, setExpand] = useState<{[key: string] : any}>({});
   const { t, i18n } = useTranslation();
 
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
 
-  const handleToggle = (id) => {
+  const handleToggle = (id: any) => {
     setExpand({
       ...expand,
       [id]: !expand[id]
@@ -38,13 +38,13 @@ function MobileMenu(props: any) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
-  const childMenu = (menu, item) => (
+  const childMenu = (menu: any, item: any) => (
     <Collapse in={menu[item.id] || false} timeout="auto" unmountOnExit>
       <List className={classes.sideGroup} component="div" disablePadding>
-        {item.child.map((subitem, index) => {
+        {item.child.map((subitem: any, index: number) => {
           if (subitem.child) {
             return (
               <div key={index.toString()}>
@@ -99,17 +99,17 @@ function MobileMenu(props: any) {
             aria-labelledby="nested-list-subheader"
             className={classes.sideMultilv}
           >
-            {navMenu.map((item, index) => {
+            {navMenu.map((item: any, index: number) => {
               if (item.child) {
                 return (
                   <div key={index.toString()}>
                     <ListItem
                       button
-                      className={expand[item.id] ? classes.currentParent : ''}
+                      className={expand[item.id as string] ? classes.currentParent : ''}
                       onClick={() => handleToggle(item.id)}
                     >
                       <ListItemText className={classes.menuList} primary={item.name} />
-                      {expand[item.id] ? <ExpandLess /> : <ExpandMore />}
+                      {expand[item.id as string] ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
                     { childMenu(expand, item) }
                   </div>
@@ -134,7 +134,7 @@ function MobileMenu(props: any) {
                 key={index.toString()}
                 className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
                 component="a"
-                href={link.starter[text]}
+                href={(link.starter as any)[text]}
                 button
               >
                 <ListItemText className={classes.menuList} primary={t('common:' + text)} />

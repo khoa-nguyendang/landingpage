@@ -4,24 +4,25 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import clsx from 'clsx';
-import Head from 'next/head';
-import { useSpacing } from '~/theme/common';
-import brand from '~/public/text/brand';
+import Head from '../../components/head';
+import { useSpacing } from '../../theme/common';
+import brand from '../../public/text/brand';
 import Header from '../../components/Header';
 import Search from '../../components/Filter/Search';
 import FaqList from '../../components/Faq/FaqList';
 import TopicList from '../../components/Faq/TopicList';
 import HelperWidget from '../../components/List/Sidebar/HelperWidget';
 import Footer from '../../components/Footer';
+import useClasses from '../../customClasses';
 
 function Faq(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
   const [keyword, setKeyword] = useState('');
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Faq
@@ -33,7 +34,7 @@ function Faq(props: any) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Search value={keyword} updateValue={setKeyword} />
+        <Search value={keyword} updateValue={setKeyword}  {...props}/>
         <div className={classes.containerWrap}>
           <div className={clsx(classes.containerGeneral, classes.spaceTopShort)}>
             <Grid spacing={3} justifyContent="center" container>
@@ -45,10 +46,10 @@ function Faq(props: any) {
               <Grid item md={4} xs={12}>
                 <Box px={3}>
                   <div className={classes.spaceBottomShort}>
-                    <TopicList />
+                    <TopicList  {...props}/>
                   </div>
                   <div className={classes.spaceBottomShort}>
-                    <HelperWidget />
+                    <HelperWidget  {...props}/>
                   </div>
                 </Box>
               </Grid>

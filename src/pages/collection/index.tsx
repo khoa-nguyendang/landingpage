@@ -1,31 +1,29 @@
 import React, { useState, Fragment } from 'react';
-import Head from 'next/head';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Box from '@material-ui/core/Box';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import ProfileCards from '~/components/Cards/ProfileCard';
-import ProductCards from '~/components/Cards/ProductCard';
-import MediaCard from '~/components/Cards/MediaCard';
-import NewsCard from '~/components/Cards/NewsCard';
-import PostCard from '~/components/Cards/PostCard';
-import brand from '~/public/text/brand';
-import { useSpacing, useText } from '~/theme/common';
+import ProfileCards from '../../components/Cards/ProfileCard';
+import ProductCards from '../../components/Cards/ProductCard';
+import MediaCard from '../../components/Cards/MediaCard';
+import NewsCard from '../../components/Cards/NewsCard';
+import PostCard from '../../components/Cards/PostCard';
+import brand from '../../public/text/brand';
+import { useSpacing, useText } from '../../theme/common';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Search from '../../components/Filter/Search';
 import Sidebar from '../../components/List/Sidebar';
+import Head from '../../components/head';
+import { Box , CssBaseline, Container, Grid} from '@mui/material';
+import useClasses from '../../customClasses';
 
-function Collection(props) {
-  const classes = useSpacing();
-  const text = useText();
+function Collection(props: any) {
+  const classes = useClasses(useSpacing);
+  const text = useText(props.theme);
   const { onToggleDark, onToggleDir } = props;
   const [keyword, setKeyword] = useState('');
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Card Collection
@@ -37,7 +35,7 @@ function Collection(props) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Search value={keyword} updateValue={setKeyword} />
+        <Search value={keyword} updateValue={setKeyword} {...props}/>
         <section className={classes.containerWrap}>
           <div className={classes.searchContent}>
             <Container>
@@ -45,7 +43,7 @@ function Collection(props) {
                 <Grid item md={8} xs={12}>
                   <div id="profile_p" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Profile Cards Portrait
                       </h4>
                     </Box>
@@ -68,7 +66,7 @@ function Collection(props) {
                   </div>
                   <div id="profile_l" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Profile Cards Landscape
                       </h4>
                     </Box>
@@ -93,7 +91,7 @@ function Collection(props) {
                   </div>
                   <div id="product_p" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Product Cards Portrait
                       </h4>
                     </Box>
@@ -108,6 +106,7 @@ function Collection(props) {
                             desc="Proin pretium arcu eget metus porta consecteturc"
                             orientation="portrait"
                             type="round"
+                            {...props}
                           />
                         </Grid>
                       ))}
@@ -115,7 +114,7 @@ function Collection(props) {
                   </div>
                   <div id="product_l" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Product Cards Landscape
                       </h4>
                     </Box>
@@ -131,6 +130,7 @@ function Collection(props) {
                               desc="Proin pretium arcu eget metus porta consecteturc"
                               orientation="landscape"
                               type="oval"
+                              {...props}
                             />
                           </Box>
                         </Grid>
@@ -139,7 +139,7 @@ function Collection(props) {
                   </div>
                   <div id="media_video" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Video Cards
                       </h4>
                     </Box>
@@ -160,7 +160,7 @@ function Collection(props) {
                   </div>
                   <div id="media_photo" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Image Cards
                       </h4>
                     </Box>
@@ -181,7 +181,7 @@ function Collection(props) {
                   </div>
                   <div id="news_p" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         News Cards Portrait
                       </h4>
                     </Box>
@@ -195,6 +195,7 @@ function Collection(props) {
                             type="full"
                             img="https://source.unsplash.com/random"
                             href="#"
+                            {...props}
                           />
                         </Grid>
                       ))}
@@ -202,7 +203,7 @@ function Collection(props) {
                   </div>
                   <div id="news_l" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         News Cards Landscape
                       </h4>
                     </Box>
@@ -216,6 +217,7 @@ function Collection(props) {
                             type="oval"
                             img="https://source.unsplash.com/random"
                             href="#"
+                            {...props}
                           />
                         </Grid>
                       ))}
@@ -223,7 +225,7 @@ function Collection(props) {
                   </div>
                   <div id="post_p" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Post Cards Portrait
                       </h4>
                     </Box>
@@ -238,6 +240,7 @@ function Collection(props) {
                             type="oval"
                             img="https://source.unsplash.com/random"
                             href="#"
+                            {...props}
                           />
                         </Grid>
                       ))}
@@ -245,7 +248,7 @@ function Collection(props) {
                   </div>
                   <div id="post_l" className={classes.spaceTopShort}>
                     <Box mb={3}>
-                      <h4 className={text.subtitle}>
+                      <h4 style={text.subtitle}>
                         Post Cards Landscape
                       </h4>
                     </Box>
@@ -260,6 +263,7 @@ function Collection(props) {
                             type="round"
                             img="https://source.unsplash.com/random"
                             href="#"
+                            {...props}
                           />
                         </Grid>
                       ))}

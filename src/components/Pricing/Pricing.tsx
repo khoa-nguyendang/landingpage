@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import { useTranslation } from 'react-i18next';
-import { useText, useTextAlign } from '~/theme/common';
+import { useText, useTextAlign } from '../../theme/common';
 import PricingCard from '../Cards/PricingCard';
 import useStyles from './pricing-style';
 import useClasses from '../../customClasses';
@@ -60,7 +60,7 @@ const tiers = [
 
 function Pricing(props: any) {
   const classes = useClasses(useStyles);
-  const align = useTextAlign();
+  const align = useTextAlign;
   const text = useClasses(useText);
   const { t, i18n } = useTranslation();
 

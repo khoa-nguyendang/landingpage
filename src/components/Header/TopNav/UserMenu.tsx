@@ -6,8 +6,8 @@ import { useTheme } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
 import Settings from './Settings';
 import useStyles from '../header-style';
-import link from '~/public/text/link';
 import useClasses from '../../../customClasses';
+import link from '../../../public/text/link';
 
 
 function UserMenu(props: any) {
@@ -24,7 +24,7 @@ function UserMenu(props: any) {
           <span className={classes.vDivider} />
         </div>
       )}
-      <Settings toggleDark={onToggleDark} toggleDir={onToggleDir} />
+      <Settings toggleDark={onToggleDark} toggleDir={onToggleDir}  {...props}/>
     </div>
   );
 }

@@ -2,21 +2,22 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Head from 'next/head';
+import Head from '../../components/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import Pricing from '../../components/Pricing';
 import Faq from '../../components/Faq';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
 
 function ContactPage(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Pricing
@@ -30,10 +31,10 @@ function ContactPage(props: any) {
         />
         <div className={classes.containerGeneral}>
           <Box mt={{ sm: 3 }}>
-            <Pricing />
+            <Pricing  {...props}/>
           </Box>
           <div className={classes.spaceTopShort}>
-            <Faq />
+            <Faq  {...props}/>
           </div>
         </div>
         <Footer toggleDir={onToggleDir} />

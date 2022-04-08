@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import clsx from 'clsx';
-import Head from 'next/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import ContactMap from '../../components/Forms/ContactMap';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import Head from '../../components/head';
+import useClasses from '../../customClasses';
 
 function WithMap(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Contact Map
@@ -30,7 +31,7 @@ function WithMap(props: any) {
         />
         <Container>
           <div className={clsx(classes.containerGeneral, classes.containerFront)}>
-            <ContactMap />
+            <ContactMap  {...props}/>
           </div>
         </Container>
         <Footer toggleDir={onToggleDir} />

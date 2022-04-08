@@ -19,7 +19,7 @@ function RelatedItems(props: any) {
       <Grid item lg={10} md={12} xs={12}>
         <Box pt={5} px={2} pb={10}>
           <Box mb={3}>
-            <h4 className={text.subtitle}>
+            <h4 style={text.subtitle}>
               {t('common:list_related')}
             </h4>
           </Box>
@@ -41,6 +41,7 @@ function RelatedItems(props: any) {
                     desc="Proin pretium arcu eget metus porta consecteturc"
                     orientation="portrait"
                     type="full"
+                    {...props}
                   />
                 </Box>
               </Grid>

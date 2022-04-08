@@ -7,13 +7,13 @@ import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'react-i18next';
 import { useText } from '../../theme/common';
 import SocialAuth from './SocialAuth';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
 import useClasses from '../../customClasses';
+import { TextField } from '@mui/material';
 
 
 function Login(props: any) {
@@ -28,18 +28,10 @@ function Login(props: any) {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
-      if (value !== values.password) {
-        return false;
-      }
-      return true;
-    });
-  });
 
   const [check, setCheck] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -65,13 +57,13 @@ function Login(props: any) {
             {t('common:login_or')}
           </Typography>
         </div>
-        <ValidatorForm
+        <form
           onError={errors => console.log(errors)}
           onSubmit={handleSubmit}
         >
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 className={classes.input}
                 label={t('common:login_email')}
@@ -79,20 +71,16 @@ function Login(props: any) {
                 fullWidth
                 name="email"
                 value={values.email}
-                validators={['required', 'isEmail']}
-                errorMessages={['This field is required', 'Email is not valid']}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextValidator
+              <TextField
                 variant="filled"
                 type="password"
                 fullWidth
                 className={classes.input}
                 label={t('common:login_password')}
-                validators={['required']}
                 onChange={handleChange('password')}
-                errorMessages={['This field is required']}
                 name="password"
                 value={values.password}
               />
@@ -103,7 +91,7 @@ function Login(props: any) {
               control={(
                 <Checkbox
                   checked={check}
-                  onChange={(e) => handleCheck(e)}
+                  onChange={(e: any) => handleCheck(e)}
                   color="secondary"
                   value={check}
                   className={classes.check}
@@ -124,7 +112,7 @@ function Login(props: any) {
               {t('common:continue')}
             </Button>
           </div>
-        </ValidatorForm>
+        </form>
       </div>
     </AuthFrame>
   );

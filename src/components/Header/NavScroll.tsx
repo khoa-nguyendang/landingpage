@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import MobileMenu from './SideNav/SingleNavMobile';
 import HeaderMenu from './TopNav/SingleNav';
 import UserMenu from './TopNav/UserMenu';
@@ -15,10 +15,11 @@ import useStyles from './header-style';
 import navMenu from './data/single';
 import samplePages from './data/sample-pages';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 let counter = 0;
-function createData(name, url) {
+function createData(name: string, url: string) {
   counter += 1;
   return {
     id: counter,
@@ -73,7 +74,7 @@ function NavScroll(props: any) {
 
   return (
     <Fragment>
-      { isMobile && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
+      { isMobile  && (<MobileMenu {...props} open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
       <AppBar
         position="relative"
         id="header"
@@ -104,7 +105,7 @@ function NavScroll(props: any) {
               </div>
               {isDesktop && (
                 <div className={classes.mainMenu}>
-                  <HeaderMenu
+                  <HeaderMenu {...props}
                     open={openMenu}
                     menuPrimary={menuList}
                     menuSecondary={samplePages}
@@ -115,7 +116,7 @@ function NavScroll(props: any) {
                 </div>
               )}
             </nav>
-            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+            <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} {...props}/>
           </div>
         </Container>
       </AppBar>

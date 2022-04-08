@@ -37,7 +37,7 @@ function PostWidget(props: any) {
     <Paper title={t('common:blog_post')} icon="ion-android-bookmark" whiteBg desc="">
       <div className={classes.albumRoot}>
         <List component="nav">
-          {news.map((item, index) => (
+          {news.map((item: any, index: number) => (
             <ListItem key={index.toString()} button>
               <ListItemText primary={item.title} secondary={item.date} />
             </ListItem>

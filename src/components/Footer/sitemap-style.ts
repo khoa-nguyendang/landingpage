@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const footerStyles = makeStyles((theme: any ) => ({
+
+const footerStyles = (theme: any ) => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
@@ -128,6 +128,6 @@ const footerStyles = makeStyles((theme: any ) => ({
   accordionIcon: {
     padding: 0
   }
-}));
+});
 
 export default footerStyles;

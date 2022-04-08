@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const subscribeStyles = makeStyles((theme: any ) => ({
+
+const subscribeStyles = (theme: any ) => ({
   subscribeWrap: {
     maxWidth: 600,
     margin: theme.spacing(0, 2),
@@ -20,6 +20,6 @@ const subscribeStyles = makeStyles((theme: any ) => ({
     marginLeft: theme.spacing(),
     transform: theme.direction === 'rtl' ? 'scale(-1)' : 'inherit'
   }
-}));
+});
 
 export default subscribeStyles;

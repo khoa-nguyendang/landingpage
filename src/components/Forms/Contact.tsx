@@ -7,20 +7,20 @@ import IconButton from '@mui/material/IconButton';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
-import CloseIcon from '@material-ui/icons/Close';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { useText, useTextAlign } from '~/theme/common';
+import CloseIcon from '@mui/icons-material/Close';
+import { useText, useTextAlign } from '../../theme/common';
 import { useTranslation } from 'react-i18next';
-import Checkbox from './Checkbox';
+
 import useStyles from './form-style';
 import useClasses from '../../customClasses';
+import { Checkbox, TextField } from '@mui/material';
 
 
 function Contact(props: any) {
   const { t, i18n } = useTranslation();
   const classes = useClasses(useStyles);
   const text = useClasses(useText);
-  const align = useTextAlign();
+  const align = useTextAlign;
 
   const [values, setValues] = useState({
     name: '',
@@ -30,15 +30,11 @@ function Contact(props: any) {
     message: ''
   });
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isTruthy', value => value);
-  });
-
   const [openNotif, setNotif] = useState(false);
 
   const [check, setCheck] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name: any) => (event: any) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
@@ -82,37 +78,33 @@ function Contact(props: any) {
         {t('common:contact_subtitle')}
       </p>
       <Box mt={8} px={{ sm: 6 }}>
-        <ValidatorForm
+        <form
           onSubmit={handleSubmit}
-          onError={errors => console.log(errors)}
+          onError={(errors: any) => console.log(errors)}
         >
           <Grid container spacing={6}>
             <Grid item sm={6} xs={12}>
-              <TextValidator
+              <TextField
                 fullWidth
                 className={classes.input}
                 label={t('common:form_name')}
                 onChange={handleChange('name')}
                 name="Name"
                 value={values.name}
-                validators={['required']}
-                errorMessages={['this field is required']}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <TextValidator
+              <TextField
                 fullWidth
                 className={classes.input}
                 label={t('common:form_email')}
                 onChange={handleChange('email')}
                 name="Email"
                 value={values.email}
-                validators={['required', 'isEmail']}
-                errorMessages={['this field is required', 'email is not valid']}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <TextValidator
+              <TextField
                 fullWidth
                 className={classes.input}
                 label={t('common:form_phone')}
@@ -122,7 +114,7 @@ function Contact(props: any) {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
-              <TextValidator
+              <TextField
                 fullWidth
                 className={classes.input}
                 label={t('common:form_company')}
@@ -132,7 +124,7 @@ function Contact(props: any) {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextValidator
+              <TextField
                 multiline
                 fullWidth
                 rows="6"
@@ -152,8 +144,9 @@ function Contact(props: any) {
                   errorMessages="This field is required"
                   checked={check}
                   value={check}
-                  onChange={(e) => handleCheck(e)}
+                  onChange={(e: any) => handleCheck(e)}
                   color="primary"
+                  {...props}
                 />
               )}
               label={(
@@ -170,7 +163,7 @@ function Contact(props: any) {
               {t('common:form_send')}
             </Button>
           </div>
-        </ValidatorForm>
+        </form>
       </Box>
     </div>
   );

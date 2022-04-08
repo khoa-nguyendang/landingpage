@@ -7,28 +7,28 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListSubheader from '@mui/material/ListSubheader';
 import ListItemText from '@mui/material/ListItemText';
-import ExpandLess from '@material-ui/icons/ExpandLess';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
-import { i18n, withTranslation } from '~/i18n';
+import { useTranslation } from 'react-i18next';
 import useStyles from '../sidenav-style';
 import navMenu from '../data/single';
 import navPage from '../data/sample-pages';
-import link from '~/public/text/link';
+import link from '../../../public/text/link';
 import useClasses from '../../../customClasses';
 
 
 function MixedMobile(props: any) {
   const classes = useClasses(useStyles);
   const { toggleDrawer, open } = props;
-  const [expand, setExpand] = useState({});
+  const [expand, setExpand] = useState<{[key: string]: any}>({});
   const { t, i18n } = useTranslation();
 
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
 
-  const handleToggle = (id) => {
+  const handleToggle = (id: any) => {
     setExpand({
       ...expand,
       [id]: !expand[id]
@@ -38,12 +38,12 @@ function MixedMobile(props: any) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
-  const childMenu = (menu, item) => (
+  const childMenu = (menu: any, item: any) => (
     <Collapse in={menu.samplePage || false} timeout="auto" unmountOnExit>
-      {item.map((subitem, index) => (
+      {item.map((subitem: any, index: number) => (
         <List
           key={index.toString()}
           className={classes.groupChild}
@@ -60,7 +60,7 @@ function MixedMobile(props: any) {
             </ListSubheader>
           )}
         >
-          {subitem.child.map((granditem, indexChild) => (
+          {subitem.child.map((granditem: any, indexChild: number) => (
             <ListItem
               key={indexChild.toString()}
               className={clsx(
@@ -94,7 +94,7 @@ function MixedMobile(props: any) {
       >
         <div className={open ? classes.menuOpen : ''}>
           <List component="nav" className={classes.sideSinglelv}>
-            {navMenu.map((item, index) => (
+            {navMenu.map((item: any, index: number) => (
               <ListItem
                 button
                 index={index.toString()}
@@ -103,6 +103,7 @@ function MixedMobile(props: any) {
                 key={item}
                 onClick={toggleDrawer}
                 onKeyDown={toggleDrawer}
+                {...props}
               >
                 <ListItemText primary={item} className={classes.menuList} />
               </ListItem>
@@ -124,7 +125,7 @@ function MixedMobile(props: any) {
                 key={index.toString()}
                 className={clsx(classes.noChild, curURL === curOrigin + langPath + '/' + text ? classes.current : '')}
                 component="a"
-                href={link.starter[text]}
+                href={(link.starter as any)[text]}
                 button
               >
                 <ListItemText className={classes.menuList} primary={t('common:' + text)} />

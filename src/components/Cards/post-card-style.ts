@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const cardsStyles = makeStyles((theme: any ) => ({
+
+const cardsStyles = (theme: any ) => ({
   figure: {},
   newsCard: {
     display: 'flex',
@@ -197,6 +197,6 @@ const cardsStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default cardsStyles;

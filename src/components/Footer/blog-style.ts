@@ -1,6 +1,6 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { alpha } from "@mui/material";
 
-const blogStyles = makeStyles((theme: any ) => ({
+const blogStyles = (theme: any ) => ({
   link: {
     margin: theme.spacing(1, 1.5),
   },
@@ -179,6 +179,6 @@ const blogStyles = makeStyles((theme: any ) => ({
       textAlign: 'left'
     }
   },
-}));
+});
 
 export default blogStyles;

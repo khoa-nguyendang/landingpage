@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const featureStyles = makeStyles((theme: any ) => ({
+
+const featureStyles = (theme: any ) => ({
   mediaCard: {
     overflow: 'hidden',
     position: 'relative',
@@ -86,6 +86,6 @@ const featureStyles = makeStyles((theme: any ) => ({
   photo: {
     cursor: 'pointer'
   }
-}));
+});
 
 export default featureStyles;

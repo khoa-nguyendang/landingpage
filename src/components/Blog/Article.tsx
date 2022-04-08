@@ -115,10 +115,10 @@ function Article(props: any) {
           {t('common:blog_write')}
         </Typography>
         <Box mt={3}>
-          <CommentForm />
+          <CommentForm  {...props}/>
         </Box>
         <List component="div">
-          {comments.map((item, index) => (
+          {comments.map((item: any, index: number) => (
             <Item
               key={index.toString()}
               avatar={item.avatar}

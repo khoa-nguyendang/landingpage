@@ -7,11 +7,12 @@ import Hidden from '@mui/material/Hidden';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Logo from '../Logo';
-import link from '~/public/text/link';
+const [expand, setExpand] = useState<{[key: string]: any}>({});
 import SearchField from './TopNav/SearchField';
 import UserMenu from './TopNav/UserMenu';
 import useStyles from './header-style';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function Search(props: any) {
@@ -54,13 +55,13 @@ function Search(props: any) {
               </a>
             </div>
             {isDesktop && (
-              <SearchField />
+              <SearchField {...props} />
             )}
           </nav>
-          <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+          <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} {...props}/>
         </div>
         <Hidden smUp>
-          <SearchField />
+          <SearchField {...props} />
         </Hidden>
       </Container>
     </AppBar>

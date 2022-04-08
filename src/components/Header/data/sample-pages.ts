@@ -1,5 +1,5 @@
-import imgAPI from '~/public/images/imgAPI';
-import link from '~/public/text/link';
+import imgAPI from '../../../public/images/imgAPI';
+import link from '../../../public/text/link';
 
 const sample = [
   {

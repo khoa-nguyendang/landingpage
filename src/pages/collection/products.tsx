@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import Head from 'next/head';
+import Head from '../../components/head';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -12,17 +12,18 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import ProductCards from '~/components/Cards/ProductCard';
-import Filter from '~/components/Filter/Filter';
-import Sorter from '~/components/Filter/Sorter';
-import Search from '~/components/Filter/Search';
-import brand from '~/public/text/brand';
-import products from '~/public/api/products';
-import { useSpacing, usePopup } from '~/theme/common';
+import ProductCards from '../../components/Cards/ProductCard';
+import Filter from '../../components/Filter/Filter';
+import Sorter from '../../components/Filter/Sorter';
+import Search from '../../components/Filter/Search';
+import brand from '../../public/text/brand';
+import products from '../../public/api/products';
+import { useSpacing, usePopup } from '../../theme/common';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import useClasses from '../../customClasses';
 
 const checkAll = [
   'check-a',
@@ -33,16 +34,12 @@ const checkAll = [
   'check-f'
 ];
 
-const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
 function Products(props: any) {
   const { onToggleDark, onToggleDir } = props;
 
-  const classes = useSpacing();
-  const popup = usePopup();
-  const isDesktop = useMediaQuery(theme => theme.breakpoints.up('md'));
+  const classes = useClasses(useSpacing);
+  const popup = useClasses(usePopup);
+  const isDesktop = useMediaQuery((theme: any) => theme.breakpoints.up('md'));
 
   const [openFilter, setOpenFilter] = useState(false);
 
@@ -70,11 +67,11 @@ function Products(props: any) {
     setOpenFilter(false);
   };
 
-  const handleGetRange = val => {
+  const handleGetRange = (val: any) => {
     setRange(val);
   };
 
-  const handleSortBy = val => {
+  const handleSortBy = (val: any) => {
     setBySelected(val);
     switch (val) {
       case 'title-asc':
@@ -101,11 +98,11 @@ function Products(props: any) {
 
   const filteredItems = () => {
     // Compare same tag
-    const intersection = (firstArray, secondArray) => firstArray
-      .filter(element => secondArray.includes(element));
+    const intersection = (firstArray: any, secondArray: any) => firstArray
+      .filter((element: any) => secondArray.includes(element));
 
     // Check is all categories checked
-    const checkFilter = (item, filterData) => {
+    const checkFilter = (item: any, filterData: any) => {
       if (filterData !== 'all') {
         return item === filterData;
       }
@@ -122,7 +119,7 @@ function Products(props: any) {
         && intersection(tag, cardItem.tag).length > 0
       )
       .sort(
-        (a, b) => {
+        (a: any, b: any) => {
           if (a[sortBy] > b[sortBy]) {
             return sortFrom;
           }
@@ -133,14 +130,14 @@ function Products(props: any) {
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Product List
         </title>
       </Head>
       <CssBaseline />
-      <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={openFilter} onClose={handleFilterClose} {...props}>
         <AppBar className={popup.appBar}>
           <Toolbar>
             <IconButton edge="start" color="inherit" onClick={handleFilterClose} aria-label="close">
@@ -156,7 +153,7 @@ function Products(props: any) {
         </AppBar>
         <Container maxWidth="sm">
           <Box pt={10}>
-            <Filter
+            <Filter  {...props}
               filterCategory={category}
               changeCategory={setCategory}
               filterRating={rating}
@@ -178,7 +175,7 @@ function Products(props: any) {
           onToggleDark={onToggleDark}
           onToggleDir={onToggleDir}
         />
-        <Search value={keyword} updateValue={setKeyword} />
+        <Search value={keyword} updateValue={setKeyword}  {...props}/>
         <div className={classes.containerWrap}>
           <section>
             <Container>
@@ -195,7 +192,7 @@ function Products(props: any) {
               <Grid container spacing={isDesktop ? 3 : 0}>
                 {isDesktop && (
                   <Grid item md={3} lg={2}>
-                    <Filter
+                    <Filter  {...props}
                       filterCategory={category}
                       changeCategory={setCategory}
                       filterRating={rating}
@@ -219,7 +216,7 @@ function Products(props: any) {
                       </Grid>
                     )}
                     {filteredItems()
-                      .map((item, index) => item.title.toLowerCase()
+                      .map((item: any, index: number) => item.title.toLowerCase()
                         .indexOf(keyword) > -1 && (
                           <Grid
                             item
@@ -232,7 +229,7 @@ function Products(props: any) {
                               mb={4}
                               px={2}
                             >
-                              <ProductCards
+                              <ProductCards  {...props}
                                 rating={item.rating}
                                 price={item.price}
                                 title={item.title}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import clsx from 'clsx';
-import Head from 'next/head';
+import Head from '../components/head';
 import Hidden from '@mui/material/Hidden';
 import { useSpacing } from '../theme/common';
 import Header from '../components/Header';
@@ -17,13 +17,14 @@ import Footer from '../components/Footer';
 import Corner from '../components/Corner';
 import Notification from '../components/Notification';
 import brand from '../public/text/brand';
+import useClasses from '../customClasses';
 
 function Landing(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
   return (
     <React.Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Home Page
@@ -38,7 +39,7 @@ function Landing(props: any) {
         />
         <main className={classes.containerWrap}>
           <section id="home">
-            <BannerSlider />
+            <BannerSlider  {...props}/>
           </section>
           <section className={clsx(classes.spaceTop, classes.spaceBottomShort)} id="feature">
             <Feature />
@@ -47,16 +48,16 @@ function Landing(props: any) {
             <Counter dark />
           </section>
           <section className={classes.spaceTop} id="testimonials">
-            <Testimonials />
+            <Testimonials  {...props}/>
           </section>
           <section className={classes.spaceTop} id="pricing">
-            <Pricing />
+            <Pricing  {...props}/>
           </section>
           <section className={clsx(classes.spaceTop, classes.spaceBottom)} id="blog">
             <Blog />
           </section>
           <section id="subscribe">
-            <Subscribe />
+            <Subscribe  {...props}/>
           </section>
         </main>
         <Hidden smDown>
@@ -64,7 +65,7 @@ function Landing(props: any) {
         </Hidden>
         <Footer toggleDir={onToggleDir} />
         <Hidden mdDown>
-          <Notification />
+          <Notification  {...props}/>
         </Hidden>
       </div>
     </React.Fragment>

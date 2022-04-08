@@ -1,5 +1,4 @@
-module.exports = {
-  mainTheme: {
+export const mainTheme = {
     palette: {
       primary: {
         light: '#E1F5FE',
@@ -18,4 +17,3 @@ module.exports = {
       }
     }
   }
-};

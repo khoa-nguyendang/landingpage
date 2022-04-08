@@ -7,11 +7,13 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@mui/icons-material/Info';
 import { useTranslation } from 'react-i18next';
 import Paper from '../../Paper';
 import useStyles from '../blog-style';
 import useClasses from '../../../customClasses';
+
+
 function GalleryWidget(props: any) {
   const classes = useClasses(useStyles);
   const { t, i18n } = useTranslation();
@@ -42,7 +44,6 @@ function GalleryWidget(props: any) {
                 <ImageListItem key={index.toString()}>
                   <img src={tile.src} className={classes.img} alt="thumb" />
                   <ImageListItemBar
-                    title={tile.title}
                     subtitle={(
                       <span>
                         by:&nbsp;

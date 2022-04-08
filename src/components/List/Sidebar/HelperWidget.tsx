@@ -6,7 +6,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import clsx from 'clsx';
-import { useTextAlign } from '~/theme/common';
+import { useTextAlign } from '../../../theme/common';
 import { useTranslation } from 'react-i18next';
 import useStyles from '../list-style';
 import useClasses from '../../../customClasses';
@@ -15,7 +15,7 @@ import useClasses from '../../../customClasses';
 function HelperWidget(props: any) {
   const { t, i18n } = useTranslation();
   const classes = useClasses(useStyles);
-  const align = useTextAlign();
+  const align = useTextAlign;
 
   return (
     <Card className={clsx(classes.helpPaper, align.textCenter)}>

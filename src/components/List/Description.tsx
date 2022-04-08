@@ -22,7 +22,7 @@ function Description(props: any) {
           <Grid container spacing={6}>
             <Grid item sm={7} xs={12}>
               <Box mb={3}>
-                <Typography variant="h4" className={text.subtitle}>
+                <Typography variant="h4" style={text.subtitle}>
                   {t('common:list_desc')}
                 </Typography>
               </Box>

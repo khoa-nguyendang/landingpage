@@ -6,23 +6,23 @@ import PostWidget from './PostWidget';
 import CommentWidget from './CommentWidget';
 import ListWidget from './ListWidget';
 import GalleryWidget from './GalleryWidget';
-import useClasses from '../../../customClasses';
+0938996246
+0978048379
 
-
-function Sidebar() {
+function Sidebar(props: any) {
   return (
     <div>
-      <SubscribeWidget />
+      <SubscribeWidget {...props}/>
       <Box py={3} />
-      <ProfileWidget />
+      <ProfileWidget  {...props}/>
       <Box py={3} />
-      <PostWidget />
+      <PostWidget  {...props}/>
       <Box py={3} />
-      <CommentWidget />
+      <CommentWidget  {...props}/>
       <Box py={3} />
-      <ListWidget />
+      <ListWidget  {...props}/>
       <Box py={3} />
-      <GalleryWidget />
+      <GalleryWidget  {...props}/>
     </div>
   );
 }

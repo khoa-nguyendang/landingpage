@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const filterStyles = makeStyles((theme: any ) => ({
+
+const filterStyles = (theme: any ) => ({
   root: {
     width: '100%',
     maxWidth: 360,
@@ -119,6 +119,6 @@ const filterStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default filterStyles;

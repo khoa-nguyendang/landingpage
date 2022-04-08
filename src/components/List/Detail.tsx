@@ -12,7 +12,7 @@ import Lightbox from 'react-image-lightbox';
 import Carousel from 'react-slick';
 import { useText } from '../../theme/common';
 import { useTranslation } from 'react-i18next';
-import imgAPI from '~/public/images/imgAPI';
+import imgAPI from '../../public/images/imgAPI';
 import useStyles from './list-style';
 import useClasses from '../../customClasses';
 
@@ -51,7 +51,7 @@ function Detail(props: any) {
     setLoaded(true);
   }, []);
 
-  function showPopup(index) {
+  function showPopup(index: number) {
     setOpen(true);
     setPhotoIndex(index);
   }
@@ -89,7 +89,7 @@ function Detail(props: any) {
                     >
                       <ButtonBase href="#!" onClick={() => showPopup(index)}>
                         <div className={classes.figure}>
-                          <div style={{ backgroundImage: `url(${imgs[index]})` }} alt="thumb" className={classes.imgDetail} />
+                          <div style={{ backgroundImage: `url(${imgs[index]})` }}  className={classes.imgDetail} />
                           <Icon className={classes.zoomIcon}>zoom_in</Icon>
                         </div>
                       </ButtonBase>

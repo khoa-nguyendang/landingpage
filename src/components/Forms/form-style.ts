@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { darken } from '@material-ui/core/styles/colorManipulator';
+import { darken } from "@mui/material";
 
-const contactStyles = makeStyles((theme: any ) => ({
+
+const contactStyles = (theme: any ) => ({
   pageWrap: {
     minHeight: '100%',
     position: 'relative',
@@ -277,6 +277,6 @@ const contactStyles = makeStyles((theme: any ) => ({
   notif: {
     top: 90
   }
-}));
+});
 
 export default contactStyles;

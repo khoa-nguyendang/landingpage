@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const titleStyles = makeStyles((theme: any ) => ({
+
+const titleStyles = (theme: any ) => ({
   left: {
     textAlign: 'left',
     '&:after': {
@@ -65,6 +65,6 @@ const titleStyles = makeStyles((theme: any ) => ({
       color: theme.palette.text.primary,
     }
   }
-}));
+});
 
 export default titleStyles;

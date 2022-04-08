@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const decoration = theme => ({
+
+const decoration = (theme: any) => ({
   background: theme.palette.type === 'dark' ? theme.palette.primary.dark : theme.palette.primary.light,
   borderRadius: '50%',
   width: 250,
@@ -11,7 +11,7 @@ const decoration = theme => ({
   opacity: 0.5
 });
 
-const featureStyles = makeStyles((theme: any ) => ({
+const featureStyles = (theme: any ) => ({
   pageSection: {
     marginBottom: theme.spacing(10)
   },
@@ -167,6 +167,6 @@ const featureStyles = makeStyles((theme: any ) => ({
     strokeWidth: 40,
     right: 40
   },
-}));
+});
 
 export default featureStyles;

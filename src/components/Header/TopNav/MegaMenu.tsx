@@ -15,9 +15,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Icon from '@mui/material/Icon';
-import { i18n } from '~/i18n';
 import useStyles from '../header-style';
 import useClasses from '../../../customClasses';
+import { useTranslation } from 'react-i18next';
 
 
 function MegaMenu(props: any) {
@@ -34,8 +34,9 @@ function MegaMenu(props: any) {
   const [curURL, setCurURL] = useState('');
   const [curOrigin, setCurOrigin] = useState('');
   const [langPath, setLangPath] = useState('');
+  const { t, i18n } = useTranslation();
 
-  const handleToggle = (id, event) => {
+  const handleToggle = (id: any, event: any) => {
     setAnchorEl(event.currentTarget);
     toggle(id);
   };
@@ -43,16 +44,16 @@ function MegaMenu(props: any) {
   useEffect(() => {
     setCurURL(window.location.href);
     setCurOrigin(window.location.origin);
-    setLangPath('/' + i18n.options.localeSubpaths[i18n.language]);
+    setLangPath('/' + i18n.language);
   }, []);
 
   return (
     <ul className={classes.multiMenu}>
-      {dataMenu.map((item, index) => (
+      {dataMenu.map((item: any, index: number) => (
         <li key={index.toString()}>
           <div>
             <Button
-              onClick={(e) => handleToggle(item.id, e)}
+              onClick={(e: any) => handleToggle(item.id, e)}
               ref={anchorRef}
               endIcon={<Icon>expand_more</Icon>}
             >
@@ -74,7 +75,7 @@ function MegaMenu(props: any) {
                   <Paper className={classes.megaMenu}>
                     <Container maxWidth="md">
                       <Grid container spacing={1}>
-                        {item.child.map((subitem, childIndex) => (
+                        {item.child.map((subitem: any, childIndex: number) => (
                           <Grid item sm={3} key={childIndex.toString()}>
                             <ListSubheader
                               disableSticky
@@ -87,7 +88,7 @@ function MegaMenu(props: any) {
                             </ListSubheader>
                             <img src={subitem.thumb} alt="thumbnail" className={classes.thumbMenu} />
                             <List component="div">
-                              {subitem.child.map((granditem, grandChildIndex) => (
+                              {subitem.child.map((granditem: any, grandChildIndex: any) => (
                                 <ListItem
                                   key={grandChildIndex.toString()}
                                   button

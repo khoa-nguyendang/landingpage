@@ -1,28 +1,28 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactFragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
 import clsx from 'clsx';
-import Head from 'next/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import Contact from '../../components/Forms/Contact';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import Container from '@mui/material/Container';
+import useClasses from '../../customClasses';
+import Head from '../../components/head';
+import { CssBaseline } from '@mui/material';
 
-function ContactPage(props) {
-  const classes = useSpacing();
+function ContactPage(props: any) {
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
 
   return (
-    <Fragment>
-      <Head>
+    <Fragment {...props}>
+      <Head {...props}>
         <title>
-          { brand.starter.name }
-          &nbsp; - Contact
+          { brand.starter.name } Contact
         </title>
       </Head>
-      <CssBaseline />
+      <CssBaseline {...props}/>
       <div className={classes.mainWrap}>
         <Header
           onToggleDark={onToggleDark}
@@ -30,7 +30,7 @@ function ContactPage(props) {
         />
         <Container maxWidth="md">
           <div className={clsx(classes.containerGeneral, classes.containerFront)}>
-            <Contact />
+            <Contact {...props}/>
           </div>
         </Container>
         <Footer toggleDir={onToggleDir} />

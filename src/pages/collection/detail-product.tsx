@@ -2,23 +2,24 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Head from 'next/head';
+import Head from '../../components/head';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
-import Detail from '~/components/List/Detail';
-import Description from '~/components/List/Description';
-import RelatedItems from '~/components/List/RelatedItems';
-import CommentGroup from '~/components/Comment/Group';
+import Detail from '../../components/List/Detail';
+import Description from '../../components/List/Description';
+import RelatedItems from '../../components/List/RelatedItems';
+import CommentGroup from '../../components/Comment/Group';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
 
 function DetailProduct(props: any) {
-  const classes = useSpacing();
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
 
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - Detail Product
@@ -32,10 +33,10 @@ function DetailProduct(props: any) {
         />
         <div className={classes.containerGeneral}>
           <Box pt={{ lg: 4 }}>
-            <Detail />
-            <Description />
-            <RelatedItems />
-            <CommentGroup />
+            <Detail  {...props}/>
+            <Description  {...props}/>
+            <RelatedItems  {...props}/>
+            <CommentGroup  {...props}/>
           </Box>
         </div>
         <Footer toggleDir={onToggleDir} />

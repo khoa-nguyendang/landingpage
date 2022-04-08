@@ -4,10 +4,10 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import link from '~/public/text/link';
 import { useText } from '../../theme/common';
 import useStyles from './blog-style';
 import useClasses from '../../customClasses';
+import link from '../../public/text/link';
 
 
 function Headline() {

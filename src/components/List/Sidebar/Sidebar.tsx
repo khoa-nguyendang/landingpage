@@ -7,20 +7,20 @@ import ImageWidget from './ImageWidget';
 import ProductWidget from './ProductWidget';
 import HelperWidget from './HelperWidget';
 
-function Sidebar() {
+function Sidebar(props: any) {
   return (
     <Box>
-      <ProductWidget />
+      <ProductWidget {...props}/>
       <Box py={3} />
-      <PeopleWidget />
+      <PeopleWidget  {...props}/>
       <Box py={3} />
-      <NewsWidget />
+      <NewsWidget  {...props}/>
       <Box py={3} />
       <TrendingWidget />
       <Box py={3} />
-      <ImageWidget />
+      <ImageWidget  {...props}/>
       <Box py={3} />
-      <HelperWidget />
+      <HelperWidget  {...props}/>
     </Box>
   );
 }

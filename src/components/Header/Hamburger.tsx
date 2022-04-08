@@ -3,24 +3,22 @@ import PropTypes from 'prop-types';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Link from 'next/link';
 import clsx from 'clsx';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Fade from '@mui/material/Fade';
-import { useTranslation } from 'react-i18next';
-import routeLink from '~/public/text/link';
+import routeLink from '../../public/text/link';
 import Logo from '../Logo';
 import useStyles from './header-style';
 import UserMenu from './TopNav/UserMenu';
 import navMenu from './data/single';
 import useClasses from '../../customClasses';
+import { Link } from '@mui/material';
 
 
 let counter = 0;
-function createData(name, url) {
+function createData(name: string, url: string) {
   counter += 1;
   return {
     id: counter,
@@ -30,7 +28,7 @@ function createData(name, url) {
 }
 
 const LinkBtn = React.forwardRef(function LinkBtn(props, ref) { // eslint-disable-line
-  return <AnchorLink to={props.to} {...props} innerRef={ref} />; // eslint-disable-line
+  return <a href='#' {...props} />; // eslint-disable-line
 });
 
 function Hamburger(props: any) {
@@ -102,9 +100,9 @@ function Hamburger(props: any) {
               </IconButton>
               <div className={clsx(classes.logo, classes.flex)}>
                 {home ? (
-                  <AnchorLink href="#home">
+                  <a href="#home">
                     <Logo type="only" />
-                  </AnchorLink>
+                  </a>
                 ) : (
                   <Link href={routeLink.starter.home}>
                     <a>
@@ -113,7 +111,7 @@ function Hamburger(props: any) {
                   </Link>
                 )}
               </div>
-              <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+              <UserMenu onToggleDark={onToggleDark} onToggleDir={onToggleDir} {...props}/>
             </nav>
           </div>
         </Container>
@@ -123,11 +121,11 @@ function Hamburger(props: any) {
           <div className={classes.mobileNav}>
             {openDrawer && (
               <ul className={classes.menu}>
-                {menuList.map((item, index) => (
+                {menuList.map((item: any, index: number) => (
                   <li key={item.id.toString()} style={{ animationDuration: index * 0.15 + 's' }}>
                     {home ? (
                       // eslint-disable-next-line
-                      <Button component={AnchorLink} onClick={handleCloseDrawer} offset={item.offset || 0} href={item.url}>
+                      <Button onClick={handleCloseDrawer} offset={0} href={item.url}  {...props}>
                         {t('common:starter-landing.header_' + item.name)}
                       </Button>
                     ) : (

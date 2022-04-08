@@ -7,9 +7,9 @@ import { useTheme } from '@mui/material/styles';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import LangIcon from '@material-ui/icons/Language';
+import LangIcon from '@mui/icons-material/Language';
 import InputAdornment from '@mui/material/InputAdornment';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Select from '@mui/material/Select';
@@ -17,10 +17,10 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import { i18n, withTranslation } from '~/i18n';
-import logo from '~/public/images/logo-starter.svg';
-import brand from '~/public/text/brand';
-import { useTextAlign } from '~/theme/common';
+import { useTranslation } from 'react-i18next';
+import logo from '../../public/images/logo-starter.svg';
+import brand from '../../public/text/brand';
+import { useTextAlign } from '../../theme/common';
 import useStyles from './sitemap-style';
 import useClasses from '../../customClasses';
 
@@ -53,7 +53,7 @@ const footers = [
 ];
 
 function Footer(props: any) {
-  const [ctn, setCtn] = useState(null);
+  const [ctn, setCtn] = useState<HTMLElement | null>(null);
   // Theme breakpoints
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
@@ -63,7 +63,7 @@ function Footer(props: any) {
   const { t, i18n } = useTranslation();
 
   const classes = useClasses(useStyles);
-  const align = useTextAlign();
+  const align = useTextAlign;
   const [values, setValues] = useState({
     lang: ''
   });
@@ -73,7 +73,7 @@ function Footer(props: any) {
     setCtn(document.getElementById('main-wrap'));
   }, []);
 
-  function handleChange(event) {
+  function handleChange(event: any) {
     setValues(oldValues => ({
       ...oldValues,
       [event.target.name]: event.target.value,
@@ -112,7 +112,7 @@ function Footer(props: any) {
                       {footer.title}
                     </Typography>
                     <ul>
-                      {footer.description.map((item, index) => (
+                      {footer.description.map((item: any, index: number) => (
                         <li key={item}>
                           <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
                             {item}
@@ -143,7 +143,7 @@ function Footer(props: any) {
                     </AccordionSummary>
                     <AccordionDetails>
                       <ul>
-                        {footer.description.map((item, index) => (
+                        {footer.description.map((item: any, index: number) => (
                           <li key={item}>
                             <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
                               {item}
@@ -185,7 +185,7 @@ function Footer(props: any) {
               </InputAdornment>
             )}
             className={classes.selectLang}
-            input={<OutlinedInput labelWidth={200} name="lang" id="outlined-lang-simple" />}
+            input={<OutlinedInput name="lang" id="outlined-lang-simple" />}
           >
             <MenuItem value="eng">English</MenuItem>
             <MenuItem value="deu">Deutsch</MenuItem>
@@ -197,7 +197,7 @@ function Footer(props: any) {
         </Grid>
       </Grid>
       {isMobile && (
-        <div className={align.textCenter}>
+        <div className={align.textCenter.textAlign}>
           <Box p={4}>
             <Copyright />
           </Box>

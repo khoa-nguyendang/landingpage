@@ -1,6 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-
-const sliderStyle = makeStyles((theme: any ) => ({
+const sliderStyle = (theme: any ) => ({
   bannerWrap: {
     position: 'relative',
     display: 'block',
@@ -77,6 +75,6 @@ const sliderStyle = makeStyles((theme: any ) => ({
   divider: {
     margin: theme.spacing(0, 2)
   }
-}));
+});
 
 export default sliderStyle;

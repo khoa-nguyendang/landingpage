@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   root: {
     display: 'flex',
     [theme.breakpoints.up('sm')]: {
@@ -19,6 +19,6 @@ const useStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default useStyles;

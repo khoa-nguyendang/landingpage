@@ -30,8 +30,8 @@ function SidebarBlog(props: any) {
             required
             classes={{
               root: classes.whiteInputRoot,
-              input: classes.whiteInputInput,
-              underline: classes.underline
+            //   input: classes.whiteInputInput,
+            //   underline: classes.underline
             }}
           />
         </FormControl>

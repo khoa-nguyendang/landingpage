@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Rating from '@material-ui/lab/Rating';
+import Rating from '@mui/material/Rating';
 import ButtonBase from '@mui/material/ButtonBase';
 import { useTranslation } from 'react-i18next';
 import useStyles from './product-card-style';

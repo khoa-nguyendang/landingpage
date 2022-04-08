@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline';
 import clsx from 'clsx';
-import Head from 'next/head';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
+import Head from '../../components/head';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import { useSpacing } from '../../theme/common';
 import Header from '../../components/Header';
 import Counter from '../../components/Counter';
@@ -18,13 +18,14 @@ import CallAction from '../../components/CallAction';
 import CompanyLogo from '../../components/CompanyLogo';
 import Footer from '../../components/Footer';
 import brand from '../../public/text/brand';
+import useClasses from '../../customClasses';
 
-function Landing(props) {
-  const classes = useSpacing();
+function Landing(props: any) {
+  const classes = useClasses(useSpacing);
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>
+      <Head {...props}>
         <title>
           { brand.starter.name }
           &nbsp; - About
@@ -55,14 +56,14 @@ function Landing(props) {
           </Container>
         </div>
         <div className={classes.spaceTopShort}>
-          <TeamSlider />
+          <TeamSlider {...props}/>
         </div>
         <div className={clsx(classes.spaceTopShort, classes.spaceBottom)}>
-          <PhotoSlider />
+          <PhotoSlider  {...props}/>
         </div>
-        <CallAction />
+        <CallAction  {...props}/>
         <div className={classes.spaceTop}>
-          <ContactMap full />
+          <ContactMap full  {...props}/>
         </div>
         <Footer toggleDir={onToggleDir} />
       </div>

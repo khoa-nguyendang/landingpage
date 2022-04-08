@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme: any ) => ({
+
+const useStyles = (theme: any ) => ({
   /* General */
   profileCard: {
     display: 'flex',
@@ -217,6 +217,6 @@ const useStyles = makeStyles((theme: any ) => ({
       }
     }
   }
-}));
+});
 
 export default useStyles;
