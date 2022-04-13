@@ -1,6 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
+<<<<<<< HEAD
 import './App.css';
+=======
+import { Counter } from './features/counter/Counter';
+import './App.scss';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme();
+>>>>>>> 649048c540a4940294add1fae608074924d6f86d
 
 function App() {
   return (
